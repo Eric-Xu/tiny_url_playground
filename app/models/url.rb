@@ -1,11 +1,14 @@
 class Url < ActiveRecord::Base
 	before_create :convert_url
 
-	validates :original_url,
-	          :presence => true,
-	          :format => { with: /\A((http|https):\/\/|)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?\z/ix }
+	validates :original_url, presence: true, url_format: true
 
 	ACRONYMNS = ["*$", "**//", ",!!!!", "02", "10Q", "AFC", "LOL", "OMG"]
+	HACRONYMNS = { "AFC" => "Away From Computer",
+								 "LOL" => "Laughing Out Loud",
+								 "OMG" => "Oh My God",
+								 "ADR" => "Address",
+								 "AFAP" => "As Far As Possible" }
 
 	private
 		def convert_url
