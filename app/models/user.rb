@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
 	has_secure_password
 
+	validates :password,
+						password_format: true
+
 	validates :email,
-						presence: true,
 						uniqueness: true,
-						on: :create
-						# email_format: true,
+						length: {minimum: 3, maximum: 254},
+						email_format: true
 end
