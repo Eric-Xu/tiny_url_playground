@@ -33,7 +33,7 @@ class UrlsController < ApplicationController
   def show
     @url = Url.find_by_converted_url(params[:converted_url])
     @url.update_column(:page_view, @url.page_view += 1)
-    # redirect_to @url.original_url
+    redirect_to check_url_protocol(@url.original_url)
   end
 
   def destroy
@@ -49,5 +49,16 @@ class UrlsController < ApplicationController
 
     def url_params
       params.require(:url).permit(:original_url)
+    end
+
+    def check_url_protocol(url)
+      if /\Ahttp/.match(url)
+        unless /\A(http|https):\/\/www/.match(url)
+          "http://www.#{url}"
+        end
+        url
+      else
+        "http://#{url}"
+      end
     end
 end

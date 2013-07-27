@@ -7,7 +7,7 @@ class Url < ActiveRecord::Base
 						presence: true,
 						url_format: true
 
-	ACRONYMNS = ["*$", "**//", ",!!!!", "02", "10Q", "AFC", "LOL", "OMG"]
+	ACRONYMNS = [",!!!!", "02", "10Q", "AFC", "LOL", "OMG"]
 	HACRONYMNS = { "AFC" => "Away From Computer",
 								 "LOL" => "Laughing Out Loud",
 								 "OMG" => "Oh My God",
