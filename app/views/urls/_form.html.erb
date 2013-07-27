@@ -2,10 +2,9 @@
   <%= render "shared/error_messages", target: @url %>
 
   <div class="field">
-    <%= f.label :original_url %>
-    <%= f.text_field :original_url %>
+    <%= f.text_field :original_url, placeholder: "Paste a link to shorten it", autofocus: true %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Shorten" %>
   </div>
 <% end %>

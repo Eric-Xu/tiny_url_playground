@@ -3,10 +3,17 @@
 <ul>
 	<% for url in @urls %>
 		<li>
-			<%= "#{url.original_url} | #{url.converted_url} | More to come later..." %>
+			<%= link_to "lol.ly/#{url.converted_url}", "#{url.converted_url}", target: "_blank" %> |
+			<%= url.original_url %> |
+			<%= pluralize(url.page_view, "Page View") %> |
+			ID (testing): <%= url.id %>
       <%= link_to 'Delete', url, method: :delete, data: { confirm: 'Are you sure?' } %>
 		</li>
 	<% end %>
 </ul>
 
-<%= link_to "New Url", new_url_path %>
+<%= link_to "New Url", new_url_path %> |
+<%= link_to "All Users", users_path %>
+
+<div>session[:url_ids] => <%= session[:url_ids].inspect %></div>
+<div>session[:user_id] => <%= session[:user_id].inspect %></div>

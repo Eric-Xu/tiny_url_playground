@@ -1,7 +1,11 @@
 class Url < ActiveRecord::Base
+	belongs_to :user
+
 	before_create :convert_url
 
-	validates :original_url, presence: true, url_format: true
+	validates :original_url,
+						presence: true,
+						url_format: true
 
 	ACRONYMNS = ["*$", "**//", ",!!!!", "02", "10Q", "AFC", "LOL", "OMG"]
 	HACRONYMNS = { "AFC" => "Away From Computer",
@@ -12,6 +16,6 @@ class Url < ActiveRecord::Base
 
 	private
 		def convert_url
-			self.converted_url = "lol.ly/" + ACRONYMNS.sample(3).join("_")
+			self.converted_url = ACRONYMNS.sample(3).join("_")
 		end
 end

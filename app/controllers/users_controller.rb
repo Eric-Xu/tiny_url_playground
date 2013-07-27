@@ -28,7 +28,8 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to users_url, notice: "Thank you for signing up!"
+      transfer_urls_from_session(@user)
+      redirect_to root_url, notice: "Thank you for signing up!"
     else
       render :new
     end

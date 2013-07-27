@@ -4,9 +4,20 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   private
+  	helper_method :current_user
+
   	def current_user
   		current_user ||= User.find(session[:user_id]) if session[:user_id]
   	end
 
-  	helper_method :current_user
+	  def transfer_urls_from_session(user)
+	    if session[:url_ids]
+	      session[:url_ids].each do |id|
+	        url = Url.find(id)
+	        url.user_id = user.id
+	        url.save
+	      end
+	      session[:url_ids] = nil
+	    end
+	  end
 end
