@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130726005726) do
+ActiveRecord::Schema.define(version: 20130727191618) do
 
   create_table "urls", force: true do |t|
     t.string   "original_url"
     t.string   "converted_url"
-    t.integer  "page_view"
+    t.integer  "page_view",     default: 0
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
