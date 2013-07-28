@@ -1,4 +1,6 @@
 class Url < ActiveRecord::Base
+	include Constantable
+
 	belongs_to :user
 
 	before_create :convert_url
@@ -7,7 +9,6 @@ class Url < ActiveRecord::Base
 						presence: true,
 						url_format: true
 
-	ACRONYMNS = [",!!!!", "02", "10Q", "AFC", "LOL", "OMG"]
 	HACRONYMNS = { "AFC" => "Away From Computer",
 								 "LOL" => "Laughing Out Loud",
 								 "OMG" => "Oh My God",
@@ -16,6 +17,6 @@ class Url < ActiveRecord::Base
 
 	private
 		def convert_url
-			self.converted_url = ACRONYMNS.sample(3).join("_")
+			self.converted_url = Constantable::ACRONYMNS.sample(3).join("_")
 		end
 end
