@@ -4,6 +4,7 @@
 	<% for url in @urls %>
 		<li>
 			<%= link_to "lol.ly/#{url.converted_url}", "#{url.converted_url}", target: "_blank" %> |
+			<%= url.lookup_acronyms %> |
 			<%= url.original_url %> |
 			<%= pluralize(url.page_view, "Page View") %> |
 			ID (testing): <%= url.id %>
@@ -17,3 +18,4 @@
 
 <div>session[:url_ids] => <%= session[:url_ids].inspect %></div>
 <div>session[:user_id] => <%= session[:user_id].inspect %></div>
+<%= @definitions %>

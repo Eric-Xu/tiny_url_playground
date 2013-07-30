@@ -16,7 +16,7 @@ class UrlsController < ApplicationController
 
   def create
     @url = Url.new(url_params)
-    @url.user = current_user # what if current_user is nil?
+    @url.user = current_user # test if current_user is nil?
 
     if @url.save
       if session[:url_ids]

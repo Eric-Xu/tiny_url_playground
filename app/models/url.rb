@@ -9,14 +9,18 @@ class Url < ActiveRecord::Base
 						presence: true,
 						url_format: true
 
-	HACRONYMNS = { "AFC" => "Away From Computer",
-								 "LOL" => "Laughing Out Loud",
-								 "OMG" => "Oh My God",
-								 "ADR" => "Address",
-								 "AFAP" => "As Far As Possible" }
+	def lookup_acronyms
+		definitions = []
+		self.converted_url.split("_").each do |acronym| # self is not needed?
+			definitions << Constantable::ACRONYMNS[acronym]
+		end
+		definitions.join(", ")
+		# definitions.map { |d| "'" + d + "'" }.join(", ")
+	end
 
 	private
 		def convert_url
-			self.converted_url = Constantable::ACRONYMNS.sample(3).join("_")
+			# self.converted_url = Constantable::ACRONYMNS.sample(3).join("_")
+			self.converted_url = Constantable::ACRONYMNS.keys.sample(3).join("_")
 		end
 end
