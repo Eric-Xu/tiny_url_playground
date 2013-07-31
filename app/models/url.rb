@@ -10,17 +10,20 @@ class Url < ActiveRecord::Base
 						url_format: true
 
 	def lookup_acronyms
-		definitions = []
-		self.converted_url.split("_").each do |acronym| # self is not needed?
-			definitions << Constantable::ACRONYMNS[acronym]
-		end
-		definitions.join(", ")
+		# definitions = []
+		# converted_url.split("_").each do |acronym|
+		# 	definitions << Constantable::ACRONYMNS[acronym]
+		# end
+		# definitions.join(", ")
 		# definitions.map { |d| "'" + d + "'" }.join(", ")
+		converted_url.split("_").map { |acronym| Constantable::ACRONYMNS[acronym] }.join(", ")
 	end
 
 	private
 		def convert_url
-			# self.converted_url = Constantable::ACRONYMNS.sample(3).join("_")
-			self.converted_url = Constantable::ACRONYMNS.keys.sample(3).join("_")
+			begin
+				# self.converted_url = Constantable::ACRONYMNS.sample(3).join("_")
+				self.converted_url = Constantable::ACRONYMNS.keys.sample(3).join("_")
+			end while Url.exists?(converted_url: self.converted_url)
 		end
 end
