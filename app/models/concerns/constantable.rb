@@ -13,7 +13,7 @@ module Constantable
 								"182" => "I hate you",
 								"20" => "Location",
 								"2BZ4UQT" => "Too Busy For You Cutey",
-								"2DLoo" => "Toodle oo",
+								"2DLOO" => "Toodle Oo",
 								"2G2B4G" => "Too Good To Be Forgotten",
 								"2G2BT" => "Too Good To Be True",
 								"2moro" => "Tomorrow",

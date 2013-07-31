@@ -25,9 +25,13 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
+    generate_token(@user)
     if @user.save
-      session[:user_id] = @user.id
+      if params[:remember_me]
+        cookies.permanent[:auth_token] = @user.auth_token
+      else
+        session[:auth_token] = @user.auth_token
+      end
       transfer_urls_from_session(@user)
       redirect_to root_url, notice: "Thank you for signing up!"
     else
@@ -53,7 +57,8 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user.destroy
-    reset_session
+    reset_session # clear url_ids and auth_token
+    cookies.delete(:auth_token)
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
