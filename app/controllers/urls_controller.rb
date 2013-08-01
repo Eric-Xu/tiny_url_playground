@@ -5,9 +5,9 @@ class UrlsController < ApplicationController
     @url = Url.new
 		@urls = []
     if current_user
-      @urls = current_user.urls
+      @urls = current_user.urls.order('created_at DESC')
     elsif session[:url_ids] && session[:url_ids].any?
-      @urls = Url.find(session[:url_ids])
+      @urls = Url.find(session[:url_ids]).reverse
     end
 	end
 
@@ -22,6 +22,7 @@ class UrlsController < ApplicationController
     if @url.save
       if session[:url_ids]
         session[:url_ids] << @url.id
+        # session[:url_ids].unshift(@url.id)
       else
         session[:url_ids] = [@url.id]
       end
@@ -40,7 +41,7 @@ class UrlsController < ApplicationController
   end
 
   def destroy
-    session[:url_ids].delete(@url.id)
+    session[:url_ids].delete(@url.id) unless session[:url_ids].nil?
     @url.destroy
     redirect_to root_url, notice: "Url successfully deleted."
   end

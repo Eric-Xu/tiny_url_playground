@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	before_save { self.email.downcase! if self.email }
+
 	has_many :urls
 
 	has_secure_password
