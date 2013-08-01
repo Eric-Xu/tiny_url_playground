@@ -28,4 +28,17 @@ class ApplicationController < ActionController::Base
 	      user.auth_token = SecureRandom.urlsafe_base64
 	    end while User.exists?(auth_token: user.auth_token)
 	  end
+
+	  def set_session_and_cookies(user)
+	    if params[:remember_me]
+	      cookies.permanent[:auth_token] = user.auth_token
+	    else
+	      session[:auth_token] = user.auth_token
+	    end
+	  end
+
+	  def delete_session_and_cookies
+	    reset_session # clear url_ids and auth_token
+	    cookies.delete(:auth_token)
+	  end
 end
