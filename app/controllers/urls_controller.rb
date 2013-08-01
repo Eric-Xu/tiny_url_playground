@@ -2,6 +2,7 @@ class UrlsController < ApplicationController
   before_action :set_url, only: [:destroy]
 
 	def index
+    @url = Url.new
 		@urls = []
     if current_user
       @urls = current_user.urls
@@ -16,17 +17,19 @@ class UrlsController < ApplicationController
 
   def create
     @url = Url.new(url_params)
-    @url.user = current_user # test if current_user is nil?
+    @url.user = current_user
 
     if @url.save
       if session[:url_ids]
-        session[:url_ids] << @url.id # is the else necessary?
+        session[:url_ids] << @url.id
       else
         session[:url_ids] = [@url.id]
       end
       redirect_to root_url, notice: 'Url was successfully created.'
     else
-      render action: 'new'
+      flash[:error] = "#{@url.errors.full_messages.to_sentence}."
+      redirect_to root_url
+      # cannot use render because need to hold onto instance variables
     end
   end
 
