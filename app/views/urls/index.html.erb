@@ -2,17 +2,8 @@
 
 <%= render "form" %>
 
-<ul>
-	<% for url in @urls %>
-		<li>
-			<%= link_to "lol.ly/#{url.converted_url}", "#{url.converted_url}", target: "_blank" %> |
-			<%= url.lookup_acronyms %> |
-			<%= url.original_url %> |
-			<%= pluralize(url.page_view, "Page View") %> |
-			ID (testing): <%= url.id %>
-      <%= link_to 'Delete', url, method: :delete, data: { confirm: 'Are you sure?' } %>
-		</li>
-	<% end %>
+<ul id="url_list">
+	<%= render @urls %>
 </ul>
 
 <%= link_to "New Url", new_url_path %> |

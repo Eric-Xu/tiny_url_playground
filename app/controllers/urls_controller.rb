@@ -19,18 +19,24 @@ class UrlsController < ApplicationController
     @url = Url.new(url_params)
     @url.user = current_user
 
-    if @url.save
-      if session[:url_ids]
-        session[:url_ids] << @url.id
-        # session[:url_ids].unshift(@url.id)
+    respond_to do |format|
+      if @url.save
+        if session[:url_ids]
+          session[:url_ids] << @url.id
+          # session[:url_ids].unshift(@url.id)
+        else
+          session[:url_ids] = [@url.id]
+        end
+        format.html { redirect_to root_url, notice: 'Url was successfully created.' }
+        format.js { render action: 'create_success.js.erb' }
       else
-        session[:url_ids] = [@url.id]
+        format.html do
+          flash[:error] = "#{@url.errors.full_messages.to_sentence}."
+          redirect_to root_url
+          # cannot use render because need to hold onto instance variables
+        end
+        format.js { render action: 'create_error.js.erb' }
       end
-      redirect_to root_url, notice: 'Url was successfully created.'
-    else
-      flash[:error] = "#{@url.errors.full_messages.to_sentence}."
-      redirect_to root_url
-      # cannot use render because need to hold onto instance variables
     end
   end
 
