@@ -1,8 +1,8 @@
-<li>
+<li id=<%= "url_id_#{url.id}" %> >
 	<%= link_to "lol.ly/#{url.converted_url}", "#{url.converted_url}", target: "_blank" %> |
 	<%= url.lookup_acronyms %> |
 	<%= url.original_url %> |
 	<%= pluralize(url.page_view, "Page View") %> |
 	ID (testing): <%= url.id %>
-  <%= link_to 'Delete', url, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Delete', url, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
 </li>

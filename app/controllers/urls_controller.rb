@@ -49,7 +49,10 @@ class UrlsController < ApplicationController
   def destroy
     session[:url_ids].delete(@url.id) unless session[:url_ids].nil?
     @url.destroy
-    redirect_to root_url, notice: "Url successfully deleted."
+    respond_to do |format|
+      format.html { redirect_to root_url, notice: "Url successfully deleted." }
+      format.js
+    end
   end
 
   private
