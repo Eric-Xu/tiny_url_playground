@@ -43,7 +43,10 @@ class UrlsController < ApplicationController
   def show
     @url = Url.find_by_converted_url(params[:converted_url])
     @url.update_column(:page_view, @url.page_view += 1)
-    redirect_to check_url_protocol(@url.original_url)
+    respond_to do |format|
+      format.html { redirect_to check_url_protocol(@url.original_url) }
+      format.js
+    end
   end
 
   def destroy
@@ -56,6 +59,8 @@ class UrlsController < ApplicationController
   end
 
   private
+    helper_method :check_url_protocol
+
     def set_url
       @url = Url.find(params[:id])
     end

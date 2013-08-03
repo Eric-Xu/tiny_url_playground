@@ -1,5 +1,5 @@
 <li id=<%= "url_id_#{url.id}" %> >
-	<%= link_to "lol.ly/#{url.converted_url}", "#{url.converted_url}", target: "_blank" %> |
+	<%= link_to "lol.ly/#{url.converted_url}", "#{url.converted_url}", target: "_blank", remote: true %> |
 	<%= url.lookup_acronyms %> |
 	<%= url.original_url %> |
 	<%= pluralize(url.page_view, "Page View") %> |
