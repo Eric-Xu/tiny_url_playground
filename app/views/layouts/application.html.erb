@@ -7,19 +7,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<% flash.each do |key, msg| %>
-		<%= content_tag :div, msg, id: key %>
-	<% end %>
+	<header role="banner">
+		<!-- move into layouts/header -->
+		<nav role="navigation">
+			<% if current_user %>
+				Logged in as <%= current_user.email %> |
+				<%= link_to_unless_current "Log Out", logout_path %>
+			<% else %>
+				<%= link_to_unless_current "Sign Up", signup_path %> or
+				<%= link_to_unless_current "Log In", login_path %>
+			<% end %>
+		</nav>
+	</header>
 
-	<% if current_user %>
-		Logged in as <%= current_user.email %> |
-		<%= link_to "Log Out", logout_path %>
-	<% else %>
-		<%= link_to "Sign Up", signup_path %> or
-		<%= link_to "Log In", login_path %>
-	<% end %>
+	<section role="main">
+		<% flash.each do |key, msg| %>
+			<%= content_tag :div, msg, id: key %>
+		<% end %>
+		<%= yield %>
+	</section>
 
-	<%= yield %>
-
+	<footer role="contentinfo">
+		<!-- move into layouts/footer -->
+		<nav role="navigation">
+			<%= link_to_unless_current "Home", root_path %> |
+			<%= link_to_unless_current "Project Description", about_path %>
+			<%= link_to_unless_current "Full List of Acronyms", dictionary_path %>
+		</nav>
+	</footer>
 </body>
 </html>

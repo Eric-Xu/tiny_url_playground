@@ -3,6 +3,10 @@ Lolly01::Application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
+  %w[about dictionary].each do |page|
+    get page, controller: 'static_pages', action: page
+  end
+
   resources :urls, except: [:edit, :update]
   resources :users, only: [:index, :new, :create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
