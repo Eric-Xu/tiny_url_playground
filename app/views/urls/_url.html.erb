@@ -2,6 +2,7 @@
 	<%= link_to "lol.ly/#{url.converted_url}", "#{url.converted_url}", target: "_blank", remote: true %> |
 	<%= url.lookup_acronyms %> |
 	<%= url.original_url %> |
+	<%= url.title %> |
 	<%= pluralize(url.page_view, "Page View") %> |
 	ID (testing): <%= url.id %>
   <%= link_to 'Delete', url, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>

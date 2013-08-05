@@ -3,7 +3,7 @@ class Url < ActiveRecord::Base
 
 	belongs_to :user
 
-	before_create :convert_url
+	before_create :convert_url, :retrieve_title
 
 	validates :original_url,
 						presence: true,
@@ -25,5 +25,10 @@ class Url < ActiveRecord::Base
 				# self.converted_url = Constantable::ACRONYMNS.sample(3).join("_")
 				self.converted_url = Constantable::ACRONYMNS.keys.sample(3).join("_")
 			end while Url.exists?(converted_url: self.converted_url)
+		end
+
+		def retrieve_title
+			doc = Nokogiri::HTML(open(self.original_url))
+			self.title = doc.at_css("title").text
 		end
 end
