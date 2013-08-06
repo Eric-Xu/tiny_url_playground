@@ -45,7 +45,7 @@ class UrlsController < ApplicationController
     @url = Url.find_by_converted_url(params[:converted_url])
     @url.update_column(:page_view, @url.page_view += 1)
     respond_to do |format|
-      format.html { redirect_to check_url_protocol(@url.original_url) }
+      format.html { redirect_to @url.original_url }
       format.js
     end
   end
@@ -60,24 +60,11 @@ class UrlsController < ApplicationController
   end
 
   private
-    helper_method :check_url_protocol
-
     def set_url
       @url = Url.find(params[:id])
     end
 
     def url_params
       params.require(:url).permit(:original_url)
-    end
-
-    def check_url_protocol(url)
-      if /\Ahttp/.match(url)
-        unless /\A(http|https):\/\/www/.match(url)
-          "http://www.#{url}"
-        end
-        url
-      else
-        "http://#{url}"
-      end
     end
 end

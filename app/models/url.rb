@@ -1,9 +1,10 @@
 class Url < ActiveRecord::Base
 	include Constantable
+	require 'open-uri'
 
 	belongs_to :user
 
-	before_create :convert_url, :retrieve_title
+	before_create :convert_url, :check_url_protocol, :retrieve_title
 
 	validates :original_url,
 						presence: true,
@@ -27,8 +28,24 @@ class Url < ActiveRecord::Base
 			end while Url.exists?(converted_url: self.converted_url)
 		end
 
+    def check_url_protocol
+    	temp_url = original_url
+      if /\Ahttp/.match(temp_url)
+        unless /\A(http|https):\/\/www/.match(temp_url)
+          self.original_url = "http://www.#{temp_url}"
+        end
+        self.original_url = temp_url
+      else
+        self.original_url = "http://#{temp_url}"
+      end
+    end
+
 		def retrieve_title
-			doc = Nokogiri::HTML(open(self.original_url))
-			self.title = doc.at_css("title").text
+			begin
+				doc = Nokogiri::HTML(open(self.original_url))
+				self.title = doc.at_css("title").text
+			rescue
+				self.title = self.original_url
+			end
 		end
 end

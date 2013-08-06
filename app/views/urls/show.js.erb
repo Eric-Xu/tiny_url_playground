@@ -1,2 +1,2 @@
-window.open('<%= check_url_protocol(@url.original_url) %>', '_blank');
+window.open('<%= @url.original_url %>', '_blank');
 $('#url_id_<%= @url.id %>').replaceWith('<%= j render @url %>');
