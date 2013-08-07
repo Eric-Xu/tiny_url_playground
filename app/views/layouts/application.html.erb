@@ -8,17 +8,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<nav role="navigation">
+		<%= render 'layouts/topnav' %>
+	</nav>
+
 	<header role="banner">
-		<!-- move into layouts/header -->
-		<nav role="navigation">
-			<% if current_user %>
-				Logged in as <%= current_user.email %> |
-				<%= link_to_unless_current "Log Out", logout_path %>
-			<% else %>
-				<%= link_to_unless_current "Sign Up", signup_path %> or
-				<%= link_to_unless_current "Log In", login_path %>
-			<% end %>
-		</nav>
+		<h1>LOL</h1>
 	</header>
 
 	<section role="main">
@@ -29,12 +24,7 @@
 	</section>
 
 	<footer role="contentinfo">
-		<!-- move into layouts/footer -->
-		<nav role="navigation">
-			<%= link_to_unless_current "Home", root_path %> |
-			<%= link_to_unless_current "Project Description", about_path %>
-			<%= link_to_unless_current "Full List of Acronyms", dictionary_path %>
-		</nav>
+		<%= render 'layouts/footer' %>
 	</footer>
 </body>
 </html>

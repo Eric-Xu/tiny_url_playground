@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
 
 	validates :email,
 						uniqueness: true,
-						length: {minimum: 3, maximum: 254},
+						length: {minimum: 3, maximum: 50},
 						email_format: true
 end
