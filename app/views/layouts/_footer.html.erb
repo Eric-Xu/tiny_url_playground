@@ -1,5 +1,5 @@
 <nav role="navigation">
-	<%= link_to_unless_current "Logo :D", root_path %> |
-	<%= link_to_unless_current "Project Description", about_path %>
-	<%= link_to_unless_current "Full List of Acronyms", dictionary_path %>
+	<%= link_to "Logo :D", root_path, class: "pull_left" %>
+	<%= link_to "Project Description", about_path, class: "pull_right" %>
+	<%= link_to "Full List of Acronyms", dictionary_path, class: "pull_right" %>
 </nav>

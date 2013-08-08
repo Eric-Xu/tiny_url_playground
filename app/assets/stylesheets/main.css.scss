@@ -1,0 +1,40 @@
+body {
+}
+
+nav[role="navigation"] {
+	background-color: rgb(227, 231, 222);
+	text-transform: uppercase;
+	padding: 2.3206751%; /* 22px / 948px */
+	clear: both;
+
+	a {
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	ul {
+		list-style: none;
+		margin: 0; /* reset webkit default */
+		padding: 0; /* reset webkit default */
+		li {
+
+		}
+	}
+	#nav_menu {
+		float: right;
+	}
+}
+
+
+/* 860px/16px = 53.75em */
+@media all and (min-width: 53.75em) {
+	nav[role="navigation"] {
+		.pull_left {
+			float: left;
+		}
+		.pull_right {
+			float: right;
+		}
+	}
+}
