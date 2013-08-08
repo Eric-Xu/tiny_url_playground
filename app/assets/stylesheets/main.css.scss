@@ -27,7 +27,7 @@ nav[role="navigation"] {
 }
 
 
-/* 860px/16px = 53.75em */
+/* 860px/16px = 53.75em; check with header.js */
 @media all and (min-width: 53.75em) {
 	nav[role="navigation"] {
 		.pull_left {
@@ -35,6 +35,9 @@ nav[role="navigation"] {
 		}
 		.pull_right {
 			float: right;
+		}
+		#nav_menu {
+			display: none;
 		}
 	}
 }
