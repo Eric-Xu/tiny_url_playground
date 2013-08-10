@@ -1,4 +1,4 @@
-<div class="js_notifications"></div>
+<div class="notifications"></div>
 
 <%= render "form" %>
 
@@ -6,8 +6,5 @@
 	<%= render @urls %>
 </ul>
 
-<div>session[:url_ids] => <%= session[:url_ids].inspect %></div>
-<div>session[:user_id] => <%= session[:user_id].inspect %></div>
-<div>session[:auth_token] => <%= session[:auth_token].inspect %></div>
-<div>cookies[:auth_token] => <%= cookies[:auth_token].inspect %></div>
-<div>cookies.permanent[:auth_token] => <%= cookies.permanent[:auth_token].inspect %></div>
+<!-- <div>session[:url_ids] => <%#= session[:url_ids].inspect %></div>
+<div>cookies[:auth_token] => <%#= cookies[:auth_token].inspect %></div> -->

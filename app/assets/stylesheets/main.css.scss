@@ -1,32 +1,127 @@
-body {
+/* mixins and variables */
+
+$light-green: rgb(227, 231, 222);
+$med-green: rgb(187, 203, 196);
+$dark-green: rgb(49, 68, 75);
+
+@mixin navigation-font {
+	font-family: 'Sofia Pro', 'Arial', 'Helvetica', sans-serif;
+	font-size: 10.5px;
+	letter-spacing: 2.6px;
+	text-transform: uppercase;
+	font-weight: bold
+}
+@mixin body-font {
+	font-family: 'Times New Roman', 'Times', serif;
+	letter-spacing: 1.2px;
+}
+@mixin input-box {
+	background: $light-green;
+	padding: 5px;
+	margin: 8px;
+}
+@mixin input-button {
+	background: $dark-green;
+	padding: 5px;
+	margin: 8px;
 }
 
+/* base styles initialized at @media max-width 320px */
+
+body {
+	background-color: $light-green;
+}
+
+h1 {
+	margin: 0;
+	padding: 2.1097046%; /* 20px / 948px */
+}
+
+ol, ul {
+	list-style: none;
+	margin: 0; /* reset webkit default */
+	padding: 0; /* reset webkit default */
+}
+
+/* typography */
+
+a {
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+/* navigation */
+
 nav[role="navigation"] {
-	background-color: rgb(227, 231, 222);
-	text-transform: uppercase;
+	background-color: $light-green;
 	padding: 2.3206751%; /* 22px / 948px */
 	clear: both;
-
 	a {
-		text-decoration: none;
-		&:hover {
-			text-decoration: underline;
-		}
-	}
-	ul {
-		list-style: none;
-		margin: 0; /* reset webkit default */
-		padding: 0; /* reset webkit default */
-		li {
-
-		}
+		@include navigation-font;
+		color: $dark-green;
 	}
 	#nav_menu {
 		float: right;
 	}
 }
 
+/* header: banner */
 
+header[role="banner"] {
+	background-color: $light-green;
+	text-align: center;
+	a {
+		color: $dark-green;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+/* section: main */
+
+section[role="main"] {
+	background-color: $med-green;
+	padding: 2.1097046%; /* 20px / 948px */
+	@include body-font;
+	color: $dark-green;
+	text-align: center;
+	a {
+		color: $dark-green;
+	}
+	input#url_original_url {
+		@include input-box;
+		width: 240px;
+		vertical-align: middle;
+	}
+	input[type="submit"], button {
+		@include input-button;
+		@include navigation-font;
+		color: $light-green;
+		border: 0;
+		width: 115px;
+		padding: 9.5px;
+		vertical-align: middle;
+	}
+	div.actions input {
+		@extend input[type="submit"];
+		width: 239px;
+	}
+	fieldset {
+		border: 0;
+		input {
+			@include input-box;
+			width: 225px;
+		}
+		input[type="checkbox"] {
+			width: 15px;
+		}
+	}
+}
+
+/* start media queries */
 /* 860px/16px = 53.75em; check with header.js */
 @media all and (min-width: 53.75em) {
 	nav[role="navigation"] {
@@ -35,6 +130,7 @@ nav[role="navigation"] {
 		}
 		.pull_right {
 			float: right;
+			margin-left: 32px;
 		}
 		#nav_menu {
 			display: none;
