@@ -11,21 +11,22 @@
 	<![endif]-->
 </head>
 <body>
-	<nav role="navigation">
-		<%= render "layouts/topnav" %>
-	</nav>
+	<div id="container">
+		<nav role="navigation">
+			<%= render "layouts/topnav" %>
+		</nav>
 
-	<header role="banner">
-		<h1><%= link_to "LOL", root_path %></h1>
-	</header>
+		<header role="banner">
+			<h1><%= link_to "LOL", root_path %></h1>
+		</header>
 
-	<section role="main">
-		<% flash.each do |key, msg| %>
-			<%= content_tag :div, msg, id: key %>
-		<% end %>
-		<%= yield %>
-	</section>
-
+		<section role="main">
+			<% flash.each do |key, msg| %>
+				<%= content_tag :div, msg, id: key %>
+			<% end %>
+			<%= yield %>
+		</section>
+	</div>
 	<footer role="contentinfo">
 		<%= render "layouts/footer" %>
 	</footer>
