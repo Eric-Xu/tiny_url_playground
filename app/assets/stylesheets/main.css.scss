@@ -29,25 +29,10 @@ $dark-green: rgb(49, 68, 75);
 /* base styles initialized at @media max-width 320px */
 
 html, body {
+	margin: 0;
 	height: 100%;
-	background-color: $light-green;
+	background-color: $med-green;
 }
-
-/*#container {
-	min-height: 100%;
-}
-
-section[role="main"] {
-	overflow: auto;
-	padding-bottom: 100px;
-}
-
-footer[role="contentinfo"] {
-	position: relative;
-	margin-top: -100px;
-	height: 100px;
-	clear: both;
-}*/
 
 h1 {
 	margin: 0;
@@ -69,11 +54,29 @@ a {
 	}
 }
 
+/* css sticky footer implementation */
+/* http://www.cssstickyfooter.com */
+
+#container {
+	min-height: 100%;
+}
+
+section[role="main"] {
+	overflow: auto;
+	padding: 22px 22px 80px 22px;
+}
+
+footer[role="contentinfo"] {
+	position: relative;
+	margin-top: -56px;
+	clear: both;
+}
+
 /* navigation */
 
 nav[role="navigation"] {
 	background-color: $light-green;
-	padding: 2.3206751%; /* 22px / 948px */
+	padding: 22px;
 	clear: both;
 	a {
 		@include navigation-font;
@@ -107,9 +110,8 @@ header[role="banner"] {
 /* section: main */
 
 section[role="main"] {
-	background-color: $med-green;
-	padding: 2.1097046%; /* 20px / 948px */
 	@include body-font;
+	background-color: $med-green;
 	color: $dark-green;
 	text-align: center;
 	a {
@@ -143,12 +145,19 @@ section[role="main"] {
 			width: 15px;
 		}
 	}
+	ul#url_list li {
+		padding: 10px 0;
+		&:hover {
+			background-color: lighten($med-green, 5%);
+		}
+	}
 }
 
 /* start media queries */
 /* 860px/16px = 53.75em; check with header.js */
 @media all and (min-width: 53.75em) {
 	nav[role="navigation"] {
+		height: 14px; /* used for css sticky footer */
 		a {
 			padding: 0;
 			&#nav_menu {
@@ -168,13 +177,3 @@ section[role="main"] {
 		}
 	}
 }
-
-/*nav[role="navigation"] {
-	a {
-		@include navigation-font;
-		color: $dark-green;
-		display: inline-block;
-		vertical-align: middle;
-		padding-bottom: 10px;
-	}
-}*/
