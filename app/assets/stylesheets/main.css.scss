@@ -153,6 +153,12 @@ section[role="main"] {
 	}
 }
 
+/* footer: contentinfo */
+
+footer[role="contentinfo"] {
+	a.pull_right { float: right; }
+}
+
 /* start media queries */
 /* 860px/16px = 53.75em; check with header.js */
 @media all and (min-width: 53.75em) {
