@@ -17,3 +17,4 @@
 //= require forms
 //= require header
 //= require notifications
+//= require definitions
