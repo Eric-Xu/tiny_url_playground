@@ -167,6 +167,16 @@ section[role="main"] {
 			background-color: lighten($med-green, 5%);
 		}
 	}
+	div.notifications {
+		background-color: lighten($med-green, 5%);
+		width: 100%;
+		li {
+			padding: 4px;
+		}
+		p, div {
+			padding: 10px;
+		}
+	}
 }
 
 /* footer: contentinfo */

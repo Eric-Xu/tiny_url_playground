@@ -21,9 +21,7 @@
 		</header>
 
 		<section role="main">
-			<% flash.each do |key, msg| %>
-				<%= content_tag :div, msg, id: key %>
-			<% end %>
+			<%= render "shared/flash" %>
 			<%= yield %>
 		</section>
 	</div>
