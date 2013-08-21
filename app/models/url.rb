@@ -43,7 +43,8 @@ class Url < ActiveRecord::Base
 		def retrieve_title
 			begin
 				doc = Nokogiri::HTML(open(self.original_url))
-				self.title = doc.at_css("title").text
+				doc_title = doc.at_css("title").text
+				self.title = doc_title.blank? ? self.original_url : doc_title
 			rescue
 				self.title = self.original_url
 			end
