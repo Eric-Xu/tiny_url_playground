@@ -78,12 +78,26 @@ nav[role="navigation"] {
 	background-color: $light-green;
 	padding: 22px;
 	clear: both;
-	a {
+	a, li {
 		@include navigation-font;
 		color: $dark-green;
+	}
+	a {
 		display: inline-block;
-		vertical-align: middle;
-		padding-bottom: 10px;
+	}
+	ul {
+		padding-top: 10px;
+		li {
+			padding: 10px 0;
+			border-top: 1px solid $med-green;
+		}
+	}
+}
+
+/* header: navigation */
+
+#container nav[role="navigation"] {
+	a {
 		&#nav_menu {
 			float: right;
 		}
@@ -93,10 +107,6 @@ nav[role="navigation"] {
 			padding: 3px;
 			text-decoration: none;
 		}
-	}
-	ul li {
-		border-top: 1px solid $med-green;
-		padding-top: 10px;
 	}
 }
 
@@ -162,8 +172,9 @@ section[role="main"] {
 /* footer: contentinfo */
 
 footer[role="contentinfo"] {
-	a {
+	nav[role="navigation"] a {
 		width: 100%;
+		padding-bottom: 10px;
 		border-bottom: 1px solid $med-green;
 		&:last-child {
 			border: 0;
@@ -196,7 +207,8 @@ footer[role="contentinfo"] {
 			padding-top: 0;
 		}
 	}
-	footer[role="contentinfo"] {
+
+	footer[role="contentinfo"] nav[role="navigation"] {
 		a, a:last-child {
 			width: auto;
 			border: 0;
