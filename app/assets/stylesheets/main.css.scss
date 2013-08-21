@@ -117,9 +117,7 @@ header[role="banner"] {
 	text-align: center;
 	a {
 		color: $dark-green;
-		&:hover {
-			text-decoration: none;
-		}
+		&:hover { text-decoration: none; }
 	}
 }
 
@@ -130,9 +128,14 @@ section[role="main"] {
 	background-color: $med-green;
 	color: $dark-green;
 	text-align: center;
-	a {
-		color: $dark-green;
-	}
+
+	a { color: $dark-green;	}
+	.url_title { font-size: 1.2em; }
+	.original_url { font-size: 0.8em;	}
+	.converted_url { font-weight: bold;	}
+	.page_view, .delete_url { color: darken($med-green, 25%);	}
+	.definitions { font-style: italic; }
+
 	input#url_original_url {
 		@include input-box;
 		width: 240px;
@@ -170,12 +173,8 @@ section[role="main"] {
 	div.notifications {
 		background-color: lighten($med-green, 5%);
 		width: 100%;
-		li {
-			padding: 4px;
-		}
-		p, div {
-			padding: 10px;
-		}
+		li { padding: 4px; }
+		p, div { padding: 10px; }
 	}
 }
 
