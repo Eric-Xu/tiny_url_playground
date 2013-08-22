@@ -1,9 +1,18 @@
 <%= content_tag :li, id: "url_id_#{url.id}" do %>
 	<p class="url_title"><%= url.title %></p>
 	<p class="original_url"><%= url.original_url %></p>
-	<%= link_to "lol.ly/#{url.converted_url}", "#{url.converted_url}", target: "_blank", remote: true, class: "converted_url" %> |
+	<%= link_to "lol.ly/#{url.converted_url}",
+							"#{url.converted_url}",
+							target: "_blank",
+							remote: true,
+							class: "converted_url" %> |
 	<span class="page_view"><%= pluralize(url.page_view, "Page View") %></span> |
-  <%= link_to 'Delete', url, method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class:"delete_url" %>
+  <%= link_to 'Delete',
+  						[:delete, url],
+							method: :delete,
+							data: { confirm: 'Are you sure?' },
+							remote: true,
+							class:"delete_url" %>
 	<p class="definitions"><%= url.lookup_acronyms %></p>
 	<button class="translate">Translate</button>
 <% end %>

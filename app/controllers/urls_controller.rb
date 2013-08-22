@@ -1,5 +1,5 @@
 class UrlsController < ApplicationController
-  before_action :set_url, only: [:destroy]
+  before_action :set_url, only: [:destroy, :delete]
   skip_before_filter :verify_authenticity_token # for testing js only; opens CSRF attacks
 
 	def index
@@ -57,6 +57,9 @@ class UrlsController < ApplicationController
       format.html { redirect_to root_url, notice: "Url successfully deleted." }
       format.js
     end
+  end
+
+  def delete # delete urls when js is disabled
   end
 
   private
