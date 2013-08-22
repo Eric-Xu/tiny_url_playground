@@ -13,7 +13,6 @@
 //= require modernizr_2.6.2.custom
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require forms
 //= require header
 //= require notifications
