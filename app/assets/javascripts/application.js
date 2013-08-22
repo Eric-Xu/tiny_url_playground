@@ -18,3 +18,4 @@
 //= require header
 //= require notifications
 //= require definitions
+//= require scroll_top
