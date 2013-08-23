@@ -26,7 +26,7 @@ $dark-green: rgb(49, 68, 75);
 	margin: 8px;
 }
 
-/* base styles initialized at @media max-width 320px */
+/* base styles target all smartphones in portrait and landscape */
 
 html, body {
 	margin: 0;
@@ -229,9 +229,8 @@ footer[role="contentinfo"] {
 	}
 }
 
-/* start media queries */
-/* 860px/16px = 53.75em; check with header.js */
-@media all and (min-width: 53.75em) {
+/* 684px/16px = 42.75em; update with header.js */
+@media all and (min-width: 42.75em) {
 	nav[role="navigation"] {
 		height: 11px; /* used for css sticky footer */
 		a {
@@ -258,6 +257,26 @@ footer[role="contentinfo"] {
 			width: auto;
 			border: 0;
 			padding: 0;
+		}
+	}
+
+	/* section: main >> about page */
+	section[role="main"] article {
+		width: 44%; /* ~ 290px/640px */
+		padding: 0 1.5625%; /* 10px/640px */
+		display: inline-block;
+		vertical-align: top;
+	}
+}
+
+/* 974px/16px = 60.875em */
+@media all and (min-width: 60.875em) {
+	/* section: main >> about page */
+	section[role="main"] article {
+		width: 30%; /* ~ 290px/930px */
+		padding: 0 1.0752688%; /* 10px/930px */
+		&#about_me {
+			width: 100%;
 		}
 	}
 }

@@ -4,7 +4,7 @@ jQuery ->
 
 	# this is a coffeescript comment
 	# check break_point in media query
-	break_point = 860
+	break_point = 684
 
 	$(menu).click (e) ->
 		e.preventDefault()
