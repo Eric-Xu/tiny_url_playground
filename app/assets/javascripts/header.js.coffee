@@ -6,7 +6,7 @@ jQuery ->
 	# check break_point in media query
 	break_point = 860
 
-	$(menu).on 'click', (e) ->
+	$(menu).click (e) ->
 		e.preventDefault()
 		nav_links.slideToggle()
 
