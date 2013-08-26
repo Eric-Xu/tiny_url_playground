@@ -1,18 +1,18 @@
 function createUrl() {
-	$('#url_original_url').val("");
+	$('#url_original_url').val('');
 	$('#url_list').prepend('<%= escape_javascript(render @url) %>');
 }
 
-function setupToggle() {
-	var new_url = $('#url_list li:first');
-	var new_url_definitions = new_url.find('.definitions')
-	var new_url_button = new_url.find('.translate')
-	new_url_definitions.hide();
-	new_url_button.css('display', 'block');
-	$(new_url_button).click(function() {
-	  return $(new_url_definitions).slideToggle();
+function prepTranslation() {
+	var $newUrl = $('#url_list li:first');
+	var $newUrlDefinitions = $newUrl.find('.definitions')
+	var $newUrlButton = $newUrl.find('.translate')
+	$newUrlDefinitions.hide();
+	$newUrlButton.css('display', 'block');
+	$newUrlButton.click(function() {
+	  return $newUrlDefinitions.slideToggle();
 	});
 }
 
 createUrl();
-setupToggle();
+prepTranslation();

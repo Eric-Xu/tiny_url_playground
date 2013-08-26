@@ -1,0 +1,5 @@
+$('.notifications')
+	.html('<p><%= "#{@url.errors.full_messages.to_sentence}." %></p>')
+	.show()
+	.delay(6000)
+	.slideUp('slow')

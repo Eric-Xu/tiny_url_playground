@@ -36,7 +36,7 @@ class UrlsController < ApplicationController
           redirect_to root_url
           # cannot use render because need to hold onto instance variables
         end
-        format.js { render action: 'create_error.js.erb' }
+        format.js { render action: 'create_fail.js.erb' }
       end
     end
   end

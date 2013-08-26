@@ -1,2 +1,12 @@
-window.open('<%= @url.original_url %>', '_blank');
-$('#url_id_<%= @url.id %>').replaceWith('<%= j render @url %>');
+function launchUrl() {
+	window.open('<%= @url.original_url %>', '_blank');
+}
+
+function updatePageViews() {
+	var $selectedUrl = $('#url_id_<%= @url.id %>');
+	var $urlPageViews = $selectedUrl.find('.page_view');
+	$urlPageViews.text('<%= pluralize @url.page_view, "Page View" %>');
+}
+
+launchUrl();
+updatePageViews();
