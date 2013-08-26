@@ -7,6 +7,9 @@ Lolly01::Application.routes.draw do
     get page, controller: 'static_pages', action: page
   end
 
+  resources :users, only: [:index, :new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
+
   resources :urls, except: [:edit, :update] do
     member do
       get :delete
@@ -14,10 +17,12 @@ Lolly01::Application.routes.draw do
     end
   end
 
-  resources :users, only: [:index, :new, :create, :destroy]
-  resources :sessions, only: [:new, :create, :destroy]
+  get '/:converted_url', to: 'urls#show', constraints: { converted_url: /[^_]*_[^_]*_[^_]*/ }
 
-  get '/:converted_url', to: 'urls#show'
+  match '(errors)/:status', to: 'errors#show',
+    constraints: { status: /\d{3}/ },
+    defaults: { status: '500' },
+    via: :all
 
   root to: "urls#index"
 end

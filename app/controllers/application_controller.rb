@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  unless Rails.application.config.consider_all_requests_local
+    rescue_from Exception, :with => :render_error
+  end
+
   private
   	helper_method :current_user
 
@@ -40,5 +44,10 @@ class ApplicationController < ActionController::Base
 	  def delete_session_and_cookies
 	    reset_session # clear url_ids and auth_token
 	    cookies.delete(:auth_token)
+	  end
+
+	  def render_error(exception)
+	  	logger.info "Status: 500\nSystem Error: Tried to access '#{request.fullpath}'.\n#{exception.class} error was raised for path.\n#{exception.message}"
+			render template: 'errors/500', layout: 'layouts/application', status: 500
 	  end
 end
