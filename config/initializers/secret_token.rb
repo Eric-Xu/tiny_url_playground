@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Lolly01::Application.config.secret_key_base = '8ca97bd8b483803daea03c56804949ccdd329872522fbe054bd66607f2572e907f4010226f1ecb2b9ad55102f5a0da0852d7bc3cc406ba3b4bfcef9247a7915c'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Lolly01::Application.config.secret_key_base = secure_token
