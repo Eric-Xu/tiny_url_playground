@@ -4,11 +4,23 @@
 	<fieldset>
 		<ol>
 			<li>
-				<%= text_field_tag :email, nil, placeholder: "Email", autofocus: true, class: "autofocus_input" %>
+				<%= email_field_tag :email,
+														nil,
+														title: 'Needs to follow standard email formatting.',
+														placeholder: 'Email',
+														autofocus: true,
+														required: true,
+														pattern: '[^@]+@[^@]+\.[a-zA-Z]{2,6}',
+														class: 'autofocus_input' %>
 				<!-- The second parameter of the text_field_tag is the value. Give it nil to have it empty. -->
 			</li>
 			<li>
-				<%= password_field_tag :password, nil, placeholder: "Password" %>
+				<%= password_field_tag :password,
+														nil,
+														title: 'Needs to be at least 6 characters and include one number and one letter.',
+														placeholder: 'Password',
+														required: true,
+														pattern: '(?=.*[a-zA-Z])(?=.*[0-9]).{6,}' %>
 			</li>
 			<li>
 				<%= check_box_tag :remember_me, 1, checked: true %>
@@ -16,7 +28,7 @@
 			</li>
 		</ol>
 	</fieldset>
-	<div class="actions">
-		<%= submit_tag "Log In" %>
+	<div class='actions'>
+		<%= submit_tag 'Log In' %>
 	</div>
 <% end %>

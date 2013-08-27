@@ -3,13 +3,23 @@
   <fieldset>
     <ol>
       <li>
-        <%= f.text_field :email, placeholder: "Email", autofocus: true, class: "autofocus_input" %>
+        <%= f.email_field :email,
+                        placeholder: "Email",
+                        autofocus: true,
+                        required: true,
+                        class: "autofocus_input" %>
       </li>
       <li>
-        <%= f.password_field :password, placeholder: "Password" %>
+        <%= f.password_field :password,
+                        title: 'Needs to be at least 6 characters and include one number and one letter.',
+                        placeholder: "Password",
+                        required: true,
+                        pattern: '(?=.*[a-zA-Z])(?=.*[0-9]).{6,}' %>
       </li>
       <li>
-        <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+        <%= f.password_field :password_confirmation,
+                        placeholder: "Confirm Password",
+                        required: true %>
       </li>
       <li>
         <%#= check_box_tag :remember_me, 1, params[:remember_me] %>
