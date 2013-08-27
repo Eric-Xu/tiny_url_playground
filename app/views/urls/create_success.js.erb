@@ -3,16 +3,27 @@ function createUrl() {
 	$('#url_list').prepend('<%= escape_javascript(render @url) %>');
 }
 
-function prepTranslation() {
+function hideDefinitions() {
+	var $urlDefinitions = $('#url_list li:first').find('.definitions');
+	$urlDefinitions.hide();
+}
+
+function initTranslateBtn() {
 	var $newUrl = $('#url_list li:first');
-	var $newUrlDefinitions = $newUrl.find('.definitions')
-	var $newUrlButton = $newUrl.find('.translate')
-	$newUrlDefinitions.hide();
-	$newUrlButton.css('display', 'block');
-	$newUrlButton.click(function() {
-	  return $newUrlDefinitions.slideToggle();
+	var $translateButton = $newUrl.find('.translate');
+	var $urlDefinitions = $newUrl.find('.definitions');
+
+	$translateButton.css('display', 'block');
+	$translateButton.click(function() {
+		if ($(this).text() == 'Translate') {
+			$(this).text('Hide');
+		} else {
+			$(this).text('Translate');
+		}
+	  return $urlDefinitions.slideToggle();
 	});
 }
 
 createUrl();
-prepTranslation();
+hideDefinitions();
+initTranslateBtn();
