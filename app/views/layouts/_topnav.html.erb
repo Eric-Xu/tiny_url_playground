@@ -1,5 +1,5 @@
 <%= link_to ":D", root_path, class: "pull_left", id: "logo_top" %>
-<%= link_to "Menu", "#nav", class: "pull_right", id: "nav_menu", data: { no_turbolink: true } %>
+<%= link_to "Menu", "#nav", class: "pull_right", id: "nav_menu" %>
 <ul>
 	<% if current_user %>
 		<li class="pull_right">Logged in as <%= current_user.email %></li>
