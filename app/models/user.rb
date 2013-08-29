@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 						password_format: true
 
 	validates :email,
-						uniqueness: true,
-						length: {minimum: 3, maximum: 50},
+						uniqueness: { case_sensitive: false },
+						length: { maximum: 50 },
 						email_format: true
 end

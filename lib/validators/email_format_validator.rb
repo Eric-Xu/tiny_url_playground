@@ -3,6 +3,6 @@ class EmailFormatValidator < ActiveModel::EachValidator
     object.errors[attribute] << (
     	options[:message] || "is not formatted properly"
     ) unless
-    	value =~ /\A[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})\z/i
+    	value =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   end
 end
