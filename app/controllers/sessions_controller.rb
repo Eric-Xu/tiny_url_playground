@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
   	if user && user.authenticate(params[:password])
       set_session_and_cookies(user)
       transfer_urls_from_session(user)
+      user.update_column(:last_login, Time.now)
       redirect_to root_url, notice: "Logged in!"
   	else
   		flash.now.alert = "Email or password is invalid."

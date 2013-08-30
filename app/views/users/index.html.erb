@@ -5,7 +5,7 @@
     <tr>
       <th>Email</th>
       <th>Urls Saved</th>
-      <th>Last Log In Date</th>
+      <th>Last Logged In</th>
       <th></th>
     </tr>
   </thead>
@@ -15,7 +15,7 @@
       <tr>
         <td><%= user.email %></td>
         <td><%= user.urls.count %></td>
-        <td><%= user.created_at.strftime('%m/%d/%Y %I:%M %p') %></td>
+        <td><%= user.last_login.strftime('%m/%d/%Y %I:%M %p') %></td>
         <td><%= link_to '(delete)', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
