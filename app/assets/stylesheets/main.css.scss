@@ -217,6 +217,19 @@ section[role="main"] {
 			repeat: no-repeat;
 		}
 	}
+
+	/* section: main >> users index */
+	table {
+		margin-left: auto;
+		margin-right: auto;
+		th {
+			padding: 10px 0;
+		}
+		td {
+			padding: 2px 20px;
+		}
+	}
+
 }
 
 /* footer: contentinfo */
