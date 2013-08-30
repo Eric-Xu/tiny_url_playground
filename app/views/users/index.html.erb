@@ -13,7 +13,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.email %></td>
+        <td><%= link_to user.email, user_path(user.id) %></td>
         <td><%= user.urls.size %></td>
         <td><%= user.last_login.strftime('%m/%d/%Y %I:%M %p') %></td>
         <td><small><%= link_to '(delete)', user, method: :delete, data: { confirm: 'Are you sure?' } %></small></td>

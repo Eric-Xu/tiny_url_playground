@@ -1,14 +1,20 @@
-<p id="notice"><%= notice %></p>
+<h1>Record for <strong><%= @user.email %></strong></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<p><small>(Last logged in on <%= @user.last_login.strftime('%B %d, %Y at %I:%M %p') %>)</small></p>
 
-<p>
-  <strong>Age:</strong>
-  <%= @user.age %>
-</p>
+<% if @user.urls.size > 0 %>
+	<table>
+	  <tbody>
+			<% @user.urls.each do |url| %>
+	      <tr>
+	        <td><%= url.original_url %></td>
+	        <td><small><%= pluralize url.page_view, 'view' %></small></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+<% else %>
+	<p>- Nothing to show -</p>
+<% end %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back to Users', users_path %>

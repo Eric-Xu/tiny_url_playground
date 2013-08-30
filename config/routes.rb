@@ -7,7 +7,7 @@ Lolly01::Application.routes.draw do
     get page, controller: 'static_pages', action: page
   end
 
-  resources :users, only: [:index, :new, :create, :destroy]
+  resources :users, except: [:edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :urls, except: [:edit, :update] do
