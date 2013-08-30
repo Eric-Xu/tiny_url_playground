@@ -3,9 +3,9 @@
 <table>
   <thead>
     <tr>
-      <th>Email</th>
-      <th>Urls Saved</th>
-      <th>Last Logged In</th>
+      <th><%= sortable 'email' %></th>
+      <th><%= sortable 'urls_count', 'Urls Saved' %></th>
+      <th><%= sortable 'last_login', 'Last Logged In' %></th>
       <th></th>
     </tr>
   </thead>
@@ -14,7 +14,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to user.email, user_path(user.id) %></td>
-        <td><%= user.urls.size %></td>
+        <td><%= user.urls_count %></td>
         <td><%= user.last_login.strftime('%m/%d/%Y %I:%M %p') %></td>
         <td><small><%= link_to '(delete)', user, method: :delete, data: { confirm: 'Are you sure?' } %></small></td>
       </tr>

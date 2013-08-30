@@ -223,7 +223,16 @@ section[role="main"] {
 		margin-left: auto;
 		margin-right: auto;
 		margin-bottom: 30px;
-		th { padding: 10px 0; }
+		th {
+			padding: 10px 0;
+			.current {
+				padding-right: 12px;
+				background-repeat: no-repeat;
+				background-position: right center;
+			}
+			.asc { background-image: image-url('up_arrow.png'); }
+			.desc { background-image: image-url('down_arrow.png'); }
+		}
 		td { padding: 2px 20px; }
 	}
 
