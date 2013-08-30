@@ -14,9 +14,9 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= user.urls.count %></td>
+        <td><%= user.urls.size %></td>
         <td><%= user.last_login.strftime('%m/%d/%Y %I:%M %p') %></td>
-        <td><%= link_to '(delete)', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><small><%= link_to '(delete)', user, method: :delete, data: { confirm: 'Are you sure?' } %></small></td>
       </tr>
     <% end %>
   </tbody>

@@ -2,7 +2,7 @@ class Url < ActiveRecord::Base
 	include Constantable
 	require 'open-uri'
 
-	belongs_to :user
+	belongs_to :user, counter_cache: true
 
 	before_create :convert_url, :check_url_protocol, :retrieve_title
 
