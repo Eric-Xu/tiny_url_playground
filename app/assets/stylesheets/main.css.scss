@@ -234,8 +234,8 @@ section[role="main"] {
 			.desc { background-image: image-url('down_arrow.png'); }
 		}
 		td { padding: 2px 20px; }
+		tr:hover { background-color: lighten($med-green, 5%); }
 	}
-
 }
 
 /* footer: contentinfo */

@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
+  # only admins can access index, show, and destroy
 
   def index
-    @users = User.order(sort_column + ' ' + sort_direction)
+    @users = User.order(sort_column + ' ' + sort_direction).paginate(per_page: 20, page: params[:page])
   end
 
   def show

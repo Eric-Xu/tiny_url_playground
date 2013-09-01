@@ -10,8 +10,8 @@ Feature: Logging in
 
 	Scenario: Successful authentication
 		Given a user visits the login page
-		And the user has an account
+			And the user has an account
 		When he submits valid credentials
 		Then he should see the home page
-		And he should see a login success message
-		And he should see a log out link
+			And he should see a login success message
+			And he should see a log out link

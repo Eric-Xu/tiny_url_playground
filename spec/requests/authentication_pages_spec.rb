@@ -22,7 +22,7 @@ describe "Authentication" do
 
 		describe "with valid credentials" do
 			let(:user) { FactoryGirl.create(:user) } # .create returns a saved User instance
-      before { valid_login(user) }
+      before { log_in user }
 
       its(:current_path) { should eq(root_path) }
 			it { should have_notification_message('Logged in') }
@@ -34,6 +34,16 @@ describe "Authentication" do
 			describe "followed by logging out" do
 				before { click_link 'Log Out' }
 				it { should have_link('Log In') }
+			end
+		end
+	end
+
+	describe "authorization" do
+		describe "for non-admin users" do
+			describe "in the Users controller" do
+				describe "visiting the user index" do
+
+				end
 			end
 		end
 	end

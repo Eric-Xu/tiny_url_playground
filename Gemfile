@@ -23,6 +23,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'nokogiri'
+gem 'will_paginate', '3.0.4'
 
 group :doc do
   gem 'sdoc', require: false

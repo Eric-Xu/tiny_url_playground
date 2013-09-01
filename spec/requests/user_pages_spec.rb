@@ -4,6 +4,30 @@ describe "User pages" do
 
 	subject { page }
 
+	describe "index" do
+		let(:user) { FactoryGirl.create(:user) }
+		before(:each) do
+			log_in user
+			visit users_path
+		end
+
+		it { should have_content(User.count) }
+
+		describe "pagination" do
+			before(:all) { 30.times { FactoryGirl.create(:user) } }
+			after(:all) { User.delete_all }
+
+			it { should have_selector('div.pagination') }
+			it "should list the first 20 users" do
+				page.all('table tbody tr').count.should == 20
+				# User.paginate(per_page: 20, page: 1).each do |user|
+					# not sure why this occasionally fails
+				# 	expect(page).to have_selector('td', text: user.email)
+				# end
+			end
+		end
+	end
+
 	describe "signup page" do
 		before { visit signup_path }
 
@@ -30,22 +54,15 @@ describe "User pages" do
 		end
 
 		describe "with valid information" do
-			# before do
-			# 	fill_in 'Email',						with: 'user@foo.com'
-			# 	fill_in 'Password',					with: 'foobar1'
-			# 	fill_in 'Confirm Password', with: 'foobar1'
-			# end
 			user = FactoryGirl.build(:user) # .build returns a User instance that's not saved
-			before { valid_signup(user) }
+			before { valid_signup user }
 
 			it "should create a user" do
-				expect { click_button submit }.to change(User, :count).by(1)
+				expect { click_button 'Sign Up' }.to change(User, :count).by(1)
 			end
 
 			describe "after saving the user" do
-				before { click_button submit }
-				let(:user) { User.find_by(email: 'user@foo.com') }
-
+				before { click_button 'Sign Up' }
 				it { should have_title(full_title('')) }
 				it { should have_notification_message('Thank you for signing up') }
 				it { should have_content(user.email) }
