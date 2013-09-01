@@ -1,3 +1,4 @@
+<% provide(:title, "User #{@user.id}") %>
 <h1>Record for <strong><%= @user.email %></strong></h1>
 
 <p><small>(Last logged in on <%= @user.last_login.strftime('%B %d, %Y at %I:%M %p') %>)</small></p>
@@ -6,10 +7,7 @@
 	<table>
 	  <tbody>
 			<% @user.urls.each do |url| %>
-	      <tr>
-	        <td><%= url.original_url %></td>
-	        <td><small><%= pluralize url.page_view, 'view' %></small></td>
-	      </tr>
+				<%= render 'url' %>
 	    <% end %>
 	  </tbody>
 	</table>

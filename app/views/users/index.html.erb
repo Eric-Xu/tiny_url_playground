@@ -1,3 +1,4 @@
+<% provide(:title, 'All Users') %>
 <h1>Registered Users: <%= @users.count %></h1>
 
 <table>
@@ -11,14 +12,7 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to user.email, user_path(user.id) %></td>
-        <td><%= user.urls_count %></td>
-        <td><%= user.last_login.strftime('%m/%d/%Y %I:%M %p') %></td>
-        <td><small><%= link_to '(delete)', user, method: :delete, data: { confirm: 'Are you sure?' } %></small></td>
-      </tr>
-    <% end %>
+    <%= render @users %>
   </tbody>
 </table>
 

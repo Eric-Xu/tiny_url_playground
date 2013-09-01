@@ -11,6 +11,7 @@ describe "User pages" do
 			visit users_path
 		end
 
+		it { should have_title(full_title('All Users')) }
 		it { should have_content(User.count) }
 
 		describe "pagination" do
@@ -18,10 +19,10 @@ describe "User pages" do
 			after(:all) { User.delete_all }
 
 			it { should have_selector('div.pagination') }
-			it "should list the first 20 users" do
+			it "should list 20 users per page" do
 				page.all('table tbody tr').count.should == 20
 				# User.paginate(per_page: 20, page: 1).each do |user|
-					# not sure why this occasionally fails
+				# not sure why this occasionally fails
 				# 	expect(page).to have_selector('td', text: user.email)
 				# end
 			end
@@ -81,6 +82,7 @@ describe "User pages" do
 		let(:user) { FactoryGirl.create(:user) }
 		before { visit user_path(user) }
 
+		it { should have_title(user.id) }
 		it { should have_selector('h1', text: user.email) }
 	end
 end
