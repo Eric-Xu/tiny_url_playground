@@ -2,5 +2,13 @@
   <td><%= link_to user.email, user_path(user.id) %></td>
   <td><%= user.urls_count %></td>
   <td><%= user.last_login.strftime('%m/%d/%Y %I:%M %p') %></td>
-  <td><small><%= link_to '(delete)', user, method: :delete, data: { confirm: 'Are you sure?' } %></small></td>
+  <td>
+  	<small>
+  		<% if user.admin? %>
+  			- admin -
+  		<% else %>
+	  		<%= link_to '(delete)', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+  		<% end %>
+  	</small>
+  </td>
 </tr>

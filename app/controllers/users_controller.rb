@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :admin_user, only: [:index, :show, :destroy]
   helper_method :sort_column, :sort_direction
-  # only admins can access index, show, and destroy
 
   def index
     @users = User.order(sort_column + ' ' + sort_direction).paginate(per_page: 20, page: params[:page])
@@ -28,7 +28,6 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    delete_session_and_cookies
     redirect_to users_url
   end
 
@@ -41,6 +40,14 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation)
+    end
+
+    def admin_user
+      begin
+        redirect_to(root_url) unless current_user.admin?
+      rescue # when current_user becomes nil after logging out
+        redirect_to(root_url)
+      end
     end
 
     def sort_column

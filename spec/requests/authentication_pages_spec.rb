@@ -39,10 +39,25 @@ describe "Authentication" do
 	end
 
 	describe "authorization" do
-		describe "for non-admin users" do
+		describe "as non-admin users" do
+			let(:user) { FactoryGirl.create(:user) }
+			let(:non_admin) { FactoryGirl.create(:user) }
+			before { log_in non_admin, no_capybara: true }
+
+			describe "submitting a DELETE request to the Users#destroy action" do
+				before { delete user_path(user) }
+				specify { expect(response).to redirect_to(root_url) }
+			end
+
 			describe "in the Users controller" do
 				describe "visiting the user index" do
+					before { get users_path } # use rspec's get instead of capybara's visit
+					specify { expect(response).to redirect_to(root_url) }
+				end
 
+				describe "visiting a user show page" do
+					before { get user_path(user) }
+					specify { expect(response).to redirect_to(root_url) }
 				end
 			end
 		end

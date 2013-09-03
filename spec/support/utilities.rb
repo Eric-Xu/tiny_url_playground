@@ -16,9 +16,9 @@ def log_in(user, options={})
 	if options[:no_capybara]
 		# log in when not using Capybara
 		# necessary for get, post, patch, and delete
-    transfer_urls_from_session(user)
+    # transfer_urls_from_session(user)
     # modified set_session_and_cookies(user)
-    set_session_and_nonpermanent_cookies(user)
+    # set_session_and_nonpermanent_cookies(user)
 	else
 		visit login_path
 		fill_in 'Email', 		with: user.email

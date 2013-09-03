@@ -5,26 +5,42 @@ describe "User pages" do
 	subject { page }
 
 	describe "index" do
-		let(:user) { FactoryGirl.create(:user) }
-		before(:each) do
-			log_in user
-			visit users_path
+		describe "for non-admin users" do
+			before { get users_path }
+			specify { expect(response).to redirect_to(root_url) }
 		end
 
-		it { should have_title(full_title('All Users')) }
-		it { should have_content(User.count) }
-
-		describe "pagination" do
-			before(:all) { 30.times { FactoryGirl.create(:user) } }
+		describe "as an admin" do
+			let(:admin) { FactoryGirl.create(:admin) }
+			before(:each) do
+				3.times { FactoryGirl.create(:user) }
+				log_in admin
+				visit users_path
+			end
 			after(:all) { User.delete_all }
 
-			it { should have_selector('div.pagination') }
-			it "should list 20 users per page" do
-				page.all('table tbody tr').count.should == 20
-				# User.paginate(per_page: 20, page: 1).each do |user|
-				# not sure why this occasionally fails
-				# 	expect(page).to have_selector('td', text: user.email)
-				# end
+			it { should have_title(full_title('All Users')) }
+			it { should have_content(User.count) }
+			it { should have_link('(delete)', href: user_path(User.first)) }
+			it { should_not have_link('(delete)', href: user_path(admin)) }
+			it "should be able to delete another user" do
+			  expect do
+			    click_link("(delete)", match: :first)
+			  end.to change(User, :count).by(-1)
+			end
+
+			describe "pagination" do
+				before(:all) { 30.times { FactoryGirl.create(:user) } }
+				after(:all) { User.delete_all }
+
+				it { should have_selector('div.pagination') }
+				it "should list 20 users per page" do
+					page.all('table tbody tr').count.should == 20
+					# User.paginate(per_page: 20, page: 1).each do |user|
+					# not sure why this occasionally fails
+					# 	expect(page).to have_selector('td', text: user.email)
+					# end
+				end
 			end
 		end
 	end
@@ -80,9 +96,25 @@ describe "User pages" do
 
 	describe "show page" do
 		let(:user) { FactoryGirl.create(:user) }
-		before { visit user_path(user) }
 
-		it { should have_title(user.id) }
-		it { should have_selector('h1', text: user.email) }
+		describe "for non-admin users" do
+			before do
+				log_in user
+				get user_path(user)
+			end
+
+			specify { expect(response).to redirect_to(root_url) }
+		end
+
+		describe "as an admin" do
+			let(:admin) { FactoryGirl.create(:admin) }
+			before(:each) do
+				log_in admin
+				visit user_path(user)
+			end
+
+			it { should have_title(user.id) }
+			it { should have_selector('h1', text: user.email) }
+		end
 	end
 end
