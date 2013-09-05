@@ -4,6 +4,8 @@ class Url < ActiveRecord::Base
 
 	belongs_to :user, counter_cache: true
 
+	default_scope -> { order('created_at DESC') }
+
 	before_create :convert_url, :check_url_protocol, :retrieve_title
 
 	validates :original_url,

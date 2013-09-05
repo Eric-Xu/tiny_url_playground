@@ -17,6 +17,9 @@ describe User do
 	it { should respond_to(:auth_token) }
 	it { should respond_to(:authenticate)}
 	it { should respond_to(:admin) }
+	it { should respond_to(:last_login) }
+	it { should respond_to(:urls_count) }
+	it { should respond_to(:urls) }
 
 	it { should be_valid }
 	it { should_not be_admin }
@@ -116,6 +119,33 @@ describe User do
 
 			it { should_not eq user_for_invalid_password }
 			specify { expect(user_for_invalid_password).to be_false }
+		end
+	end
+
+	describe "url associations" do
+		before { @user.save }
+		let!(:older_url) do
+			FactoryGirl.create(:url, user: @user, created_at: 1.day.ago)
+		end
+		let!(:newer_url) do
+			FactoryGirl.create(:url, user: @user, created_at: 1.hour.ago)
+		end
+
+		it "should have the right urls in the right order" do
+			expect(@user.urls.to_a).to eq [newer_url, older_url]
+		end
+
+		it "should destroy associated urls" do
+			urls = @user.urls.to_a
+			@user.destroy
+			expect(urls).not_to be_empty
+			urls.each do |url|
+				expect(Url.where(id: url.id)).to be_empty
+				# the above line is the same as saying:
+				# expect do
+				# 	Url.find(url)
+				# end.to raise_error(ActiveRecord::RecordNotFound)
+			end
 		end
 	end
 end

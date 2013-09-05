@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 	before_save { self.email.downcase! if self.email }
   before_create :initialize_last_login
 
-	has_many :urls
+	has_many :urls, dependent: :destroy
 
 	has_secure_password
 

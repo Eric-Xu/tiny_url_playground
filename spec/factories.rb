@@ -9,4 +9,9 @@ FactoryGirl.define do
 			admin true
 		end
 	end
+
+	factory :url do
+		original_url 'www.foo.com'
+		user
+	end
 end

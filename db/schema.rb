@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130901231335) do
+ActiveRecord::Schema.define(version: 20130903190756) do
 
   create_table "urls", force: true do |t|
     t.string   "original_url"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20130901231335) do
     t.datetime "updated_at"
     t.string   "title"
   end
+
+  add_index "urls", ["user_id"], name: "index_urls_on_user_id"
 
   create_table "users", force: true do |t|
     t.datetime "created_at"

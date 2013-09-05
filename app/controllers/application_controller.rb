@@ -9,9 +9,6 @@ class ApplicationController < ActionController::Base
   	helper_method :current_user
 
   	def current_user
-  		logger.debug('---------------------------')
-  		logger.debug("sessions: #{session[:auth_token]} and #{session[:url_ids]}" )
-  		logger.debug(search_session_and_cookies(:auth_token))
   		current_user ||= User.find_by_auth_token!(search_session_and_cookies(:auth_token)) if search_session_and_cookies(:auth_token)
   	end
 

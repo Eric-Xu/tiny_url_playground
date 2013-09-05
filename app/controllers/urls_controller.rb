@@ -6,9 +6,11 @@ class UrlsController < ApplicationController
     @url = Url.new
 		@urls = []
     if current_user
-      @urls = current_user.urls.order('created_at DESC')
+      @urls = current_user.urls
+      # @urls = current_user.urls.order('created_at DESC')
     elsif session[:url_ids] && session[:url_ids].any?
-      @urls = Url.find(session[:url_ids]).reverse
+      @urls = Url.find(session[:url_ids])
+      # @urls = Url.find(session[:url_ids]).reverse
     end
 	end
 
