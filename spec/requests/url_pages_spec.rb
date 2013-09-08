@@ -19,6 +19,12 @@ describe "Url pages" do
 
 			describe "urls" do
 				it { should have_content(u1.original_url) }
+				it { should have_content(u1.title) }
+				it { should have_content("#{u1.page_view} Page Views") }
+				it { should have_selector("a[href='#{u1.converted_url}'][target='_blank']") }
+				it { should have_selector('a[data-method=delete]', text: 'Delete') }
+				it { should have_selector('button', text: 'Translate') }
+
 				it { should have_content(u2.original_url) }
 			end
 		end
