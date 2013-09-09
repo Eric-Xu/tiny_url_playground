@@ -1,6 +1,6 @@
 <%= link_to ":D", root_path, class: "pull_left", id: "logo_top" %>
 <%= link_to "Menu", "#nav", class: "pull_right", id: "nav_menu" %>
-<ul>
+<ul class="showing">
 	<% if current_user %>
 		<li class="pull_right">Logged in as <%= current_user.email %></li>
 		<li class="pull_right"><%= link_to "Log Out", logout_path %></li>

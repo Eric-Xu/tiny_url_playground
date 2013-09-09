@@ -8,12 +8,14 @@ jQuery ->
 
 	$menu.click (e) ->
 		e.preventDefault()
-		$navLinks.slideToggle()
+		$navLinks.slideToggle 'slow', ->
+			$navLinks.toggleClass('hidden', $(this).is(':hidden'))
+			$navLinks.toggleClass('showing', $(this).is(':visible'))
 
 	$(window).resize ->
 		w = $(window).width()
 
 		if w > breakPoint && $navLinks.is(':hidden')
-			$navLinks.removeAttr('style')
+			$navLinks.removeAttr('style').removeClass('hidden').addClass('showing')
 		else if w < breakPoint && $navLinks.is(':visible')
-			$navLinks.hide()
+			$navLinks.removeClass('showing').addClass('hidden')

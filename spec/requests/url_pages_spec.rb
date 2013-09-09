@@ -23,9 +23,12 @@ describe "Url pages" do
 				it { should have_content("#{u1.page_view} Page Views") }
 				it { should have_selector("a[href='#{u1.converted_url}'][target='_blank']") }
 				it { should have_selector('a[data-method=delete]', text: 'Delete') }
-				it { should have_selector('button', text: 'Translate') }
+				it { should have_css('button.hidden') }
+				it { should have_css('p.definitions.showing') }
 
 				it { should have_content(u2.original_url) }
+
+				# describe "after JS loads" do
 			end
 		end
 	end
@@ -38,10 +41,6 @@ describe "Url pages" do
 		describe "with invalid format" do
 			it "should not create a url" do
 				expect { click_button submit }.not_to change(Url, :count)
-			end
-
-			describe "error messages" do
-				it { should have_selector('div.notifications', 'not formatted properly') }
 			end
 		end
 

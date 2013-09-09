@@ -27,6 +27,11 @@ $dark-green: rgb(49, 68, 75);
 	margin: 8px;
 }
 
+/* toggle features */
+
+.hidden { display: none; }
+.showing { display: block; }
+
 /* base styles target all smartphones in portrait and landscape */
 
 html, body {
@@ -141,7 +146,6 @@ section[role="main"] {
 	.definitions { font-style: italic; }
 	.home { @include navigation-font; }
 	button.translate {
-		display: none;
 		margin-left: auto;
 		margin-right: auto;
 	}

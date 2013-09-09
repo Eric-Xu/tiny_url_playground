@@ -1,9 +1,13 @@
 jQuery ->
-	$('.definitions').hide()
-	$('.translate').css('display', 'block')
+	$('.definitions').removeClass('showing').addClass('hidden')
+	$('.translate').removeClass('hidden').addClass('showing')
 
 	$('.translate').click ->
-		$(this).prev('.definitions').slideToggle()
+		$definitions = $(this).prev('.definitions')
+		$definitions.slideToggle 'slow', ->
+			$definitions.toggleClass('hidden', $(this).is(':hidden'))
+			$definitions.toggleClass('showing', $(this).is(':visible'))
+
 		if $(this).text() == 'Translate'
 			$(this).text('Hide')
 		else

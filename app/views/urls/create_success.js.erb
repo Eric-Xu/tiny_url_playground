@@ -5,7 +5,7 @@ function createUrl() {
 
 function hideDefinitions() {
 	var $urlDefinitions = $('#url_list li:first').find('.definitions');
-	$urlDefinitions.hide();
+	$urlDefinitions.removeClass('showing').addClass('hidden');
 }
 
 function initTranslateBtn() {
@@ -13,14 +13,17 @@ function initTranslateBtn() {
 	var $translateButton = $newUrl.find('.translate');
 	var $urlDefinitions = $newUrl.find('.definitions');
 
-	$translateButton.css('display', 'block');
+	$translateButton.removeClass('hidden').addClass('showing');
 	$translateButton.click(function() {
 		if ($(this).text() == 'Translate') {
 			$(this).text('Hide');
 		} else {
 			$(this).text('Translate');
 		}
-	  return $urlDefinitions.slideToggle();
+	  return $urlDefinitions.slideToggle('slow', function(){
+			$urlDefinitions.toggleClass('hidden', $(this).is(':hidden'))
+			$urlDefinitions.toggleClass('showing', $(this).is(':visible'))
+	  });
 	});
 }
 
