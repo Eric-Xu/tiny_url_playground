@@ -257,7 +257,8 @@ footer[role="contentinfo"] {
 	}
 }
 
-/* 684px/16px = 42.75em; update with header.js */
+/* 684px/16px = 42.75em */
+/* update with header.js and static_pages_spec.rb */
 @media all and (min-width: 42.75em) {
 	nav[role="navigation"] {
 		height: 11px; /* used for css sticky footer */

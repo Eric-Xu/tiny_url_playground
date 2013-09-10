@@ -31,15 +31,30 @@ describe UrlsController do
 		end
 	end
 
-	# describe "when showing a url with Ajax" do
-	# 	let!(:url) { Url.create(original_url: 'www.baz.com') }
-	# 	subject { url }
-	# 	before { xhr :get, :show, id: url.id }
+	describe "when showing a url with Ajax" do
+		# let!(:url1) { Url.create(original_url: 'www.baz.com') }
 
-	# 	it "redirect to original url page" do
-	# 		response.should redirect_to('http://www.baz.com')
-	# 	end
+		let(:user) { FactoryGirl.create(:user) }
+		let!(:url2) { FactoryGirl.create(:url, user: user, original_url: "www.foo.com") }
 
-	# 	its("page_view") { should eq(1) }
-	# end
+		# it "should respond with success for url1" do
+		# 	xhr :get, :show, id: url1.id
+		# 	expect(response).to be_success
+		# end
+
+		it "should respond with success for url2" do
+			xhr :get, :show, id: url2.id
+			expect(response).to be_success
+		end
+
+		# before { xhr :get, :show, id: url1.id }
+
+		# subject { url }
+
+		# it "redirect to original url page" do
+		# 	response.should redirect_to('http://www.baz.com')
+		# end
+
+		# its("page_view") { should eq(1) }
+	end
 end
