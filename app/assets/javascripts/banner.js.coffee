@@ -14,8 +14,7 @@ jQuery ->
       {key: "TWSS",   value: "That's What She Said"},
       {key: "KB",     value: "Kick Butt"},
       {key: "HBB",    value: "Hip Beyond Belief"},
-      {key: "VCDA",   value: "Vaya Con Dios, Amigo"}
-    ]
+      {key: "VCDA",   value: "Vaya Con Dios, Amigo"} ]
 
     if index < acronyms.length
       updateText(acronyms[index].key, acronyms[index].value)
