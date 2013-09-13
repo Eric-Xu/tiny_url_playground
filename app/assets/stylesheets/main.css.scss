@@ -4,6 +4,9 @@ $light-green: rgb(227, 231, 222);
 $med-green: rgb(187, 203, 196);
 $dark-green: rgb(49, 68, 75);
 
+$bnr-cap-height: 220px;
+$bnr-cap-width: 220px;
+
 @mixin navigation-font {
 	font-family: 'Sofia Pro', 'Arial', 'Helvetica', sans-serif;
 	font-size: 10.5px;
@@ -118,16 +121,92 @@ nav[role="navigation"] {
 }
 
 /* header: banner */
-
+/* todo: refactor with @extend; check web-kits */
 header[role="banner"] {
 	background-color: $light-green;
 	text-align: center;
-	a {
-		letter-spacing: 7px;
-		color: $dark-green;
-		&:hover { text-decoration: none; }
+	padding: 0 0 15px 0;
+	margin-top: -35px;
+
+	#bnr_ring {
+		height: $bnr-cap-height;
+		width: $bnr-cap-width;
+		margin: 0 auto;
+		border-radius: 50%;
+		position: relative;
+		cursor: default;
 	}
-	h1 { font-weight: bold; }
+
+	#ring_rear {
+		width: 98%;
+		height: 98%;
+		border-radius: 50%;
+		overflow: hidden;
+		color: $light-green;
+		background: $dark-green;
+		position: absolute;
+		top: 1%;
+		left: 1%;
+
+		h2 {
+			@include navigation-font;
+			font-size: 1.4em;
+			font-weight: normal;
+			margin: 0 60px;
+			padding: 22px 0 0 0;
+		}
+		p {
+			@include body-font;
+			margin: 0 22px;
+			padding: 9px 0;
+			&#front_msg, &#rear_msg {
+				font-style: italic;
+				padding-top: 18px;
+				border-top: 1px solid $light-green;
+			}
+		}
+		#ring_upper {
+			height: ($bnr-cap-height*0.5);
+		}
+	}
+
+	#ring_front {
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		background: $light-green;
+		position: absolute;
+
+		-webkit-transform-origin: 95% 40%;
+		-moz-transform-origin: 95% 40%;
+		-o-transform-origin: 95% 40%;
+		-ms-transform-origin: 95% 40%;
+		transform-origin: 95% 40%;
+
+		-webkit-transition: all 0.3s ease-in-out;
+		-moz-transition: all 0.3s ease-in-out;
+		-o-transition: all 0.3s ease-in-out;
+		-ms-transition: all 0.3s ease-in-out;
+		transition: all 0.3s ease-in-out;
+
+		h1 {
+			@include navigation-font;
+			font-size: 2.5em;
+			color: $dark-green;
+			padding: 0;
+			line-height: $bnr-cap-height;
+		}
+	}
+
+	#bnr_ring:hover #ring_front {
+		background: $med-green;
+		box-shadow: inset 0 0 0 15px rgba(255,255,255, 0.5), 0 1px 3px rgba(0,0,0,0.2);
+		-webkit-transform: rotate(-140deg);
+		-moz-transform: rotate(-140deg);
+		-o-transform: rotate(-140deg);
+		-ms-transform: rotate(-140deg);
+		transform: rotate(-140deg);
+	}
 }
 
 /* section: main */
