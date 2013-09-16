@@ -19,7 +19,7 @@ class Url < ActiveRecord::Base
 		# end
 		# definitions.join(", ")
 		# definitions.map { |d| "'" + d + "'" }.join(", ")
-		converted_url.split("_").map { |acronym| Constantable::ACRONYMNS[acronym] }.join(", ")
+		converted_url.split("_").map { |acronym| Constantable::ACRONYMNS[acronym] }.join(" -- ")
 	end
 
 	private
