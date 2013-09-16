@@ -4,7 +4,7 @@ jQuery ->
 		return false
 
 	$(window).scroll ->
-		if $(window).scrollTop() > 150
+		if $(window).scrollTop() > 300
 			$('#back_to_top').fadeIn()
 		else
 			$('#back_to_top').fadeOut()

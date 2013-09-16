@@ -5,15 +5,18 @@ jQuery ->
     acronyms = [
       {key: "BHAG",   value: "Big Hairy Audacious Goal"},
       {key: "MIC",    value: "Meanwhile, in Canada"},
+      {key: "POTATO", value: "Person Over Thirty Acting Twenty One"},
+      {key: "SNAG",   value: "Sensitive New Age Guy"},
+      {key: "PU",     value: "That Stinks"},
       {key: "NSTLC",  value: "Need Some Tender Loving Care"},
+      {key: "WIM",    value: "Woe Is Me"},
+      {key: "POTUS",  value: "President of the United States"},
+      {key: "FGDAI",  value: "Fuhgedaboudit"},
+      {key: "MTFBWY", value: "May The Force Be With You"},
       {key: "EIP",    value: "Eggo Is Preggo"},
-      {key: "GIGO",   value: "Garbage In, Garbage Out"},
-      {key: "SIP",    value: "Skiing In Powder"},
-      {key: "GMTA",   value: "Great Minds Think Alike"},
-      {key: "MLAS",   value: "My Lips Are Sealed"},
-      {key: "TWSS",   value: "That's What She Said"},
-      {key: "KB",     value: "Kick Butt"},
-      {key: "HBB",    value: "Hip Beyond Belief"},
+      {key: "WABOM",  value: "What A Bunch Of Malarkey"},
+      {key: "TANSIT", value: "There's A New Sheriff In Town"},
+      {key: "YAJWD",  value: "You Ain't Just Whistling Dixie"},
       {key: "VCDA",   value: "Vaya Con Dios, Amigo"} ]
 
     if index < acronyms.length

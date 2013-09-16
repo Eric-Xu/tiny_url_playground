@@ -5,38 +5,90 @@
 	<h2>Front End</h2>
 	<p>
 		<em>HTML5</em><br>
-		tags and form validators
+		For its semantic markup and client-side form validations.
 	</p>
-	<p>ARIA landmark roles</p>
-	<p>CSS3 Transitions</p>
 	<p>
 		<em>Sass</em><br>
-		and lot of other cool stuff.
+		Used mixins, extends, variables, and nested rules to write better CSS.
 	</p>
-	<p>jQuery</p>
-	<p>Coffeescript</p>
-	<p>Ajax</p>
-	<p>Modernizr</p>
-	<p>Progressive enhancement - JS toggle example</p>
+	<p>
+		<em>CSS3 Transitions</em><br>
+		To create a banner animation that did not depent on Javascript.
+	</p>
+	<p>
+		<em>Sticky Footer</em><br>
+		Adapted from www.cssstickyfooter.com.
+	</p>
+	<p>
+		<em>Coffeescript</em><br>
+		To avoid global variables and namespace pollution.
+	</p>
+	<p>
+		<em>jQuery</em><br>
+		For DOM manipulations and event handling.
+	</p>
+	<p>
+		<em>Ajax</em><br>
+		To create and delete urls without a full page refresh.
+	</p>
+	<p>
+		<em>Responsive Design</em><br>
+		With media query breakpoints set based on the design and content of the application.
+	</p>
+	<p>
+		<em>Progressive Enhancement With Javascript</em><br>
+		UI was designed for browsers without JS first, then enhanced for browsers with JS enabled.
+	</p>
+	<p>
+		<em>Modernizr</em><br>
+		Used to trigger focus on a form when autofocus is not supported by a user's browser.
+	</p>
+	<p>
+		<em>Normalize.css</em><br>
+		To make browsers render elements more consistently and in line with modern standards.
+	</p>
 	<p></p>
 </article>
 <article>
 	<h2>Back End</h2>
 	<p>
-		<em>Rails 4</em><br>
+		<em>Rails 4.0</em>
 	</p>
 	<p>
-		<em>Routing constraints</em><br>
-		are checks written around routes that will clean and validate information before even hitting a controller action. The key word here is before. Before this external data can touch behavior in your controllers, and subsequently your persistence layers, it already gets vetted. This opens up a lot of flexibility and security to our controllers, and can keep us from writing more boilerplate than we normally would.
+		<em>Authentication</em><br>
+		Built from scratch using has_secure_password and features a "Remember me" checkbox option.
+	</p>
+	<p>
+		<em>Authorization</em><br>
+		Built from scratch; grants different permissions for visitors, logged in users, and administrative users.
+	</p>
+	<p>
+		<em>Exception Handling</em><br>
+		Used Rack middleware to handle rescuing from exceptions and rendering out custom error pages.
+	</p>
+	<p>
+		<em>Routing Constraints</em><br>
+		To ensure that only qualified paths will trigger the ErrorsController show action.
+	</p>
+	<p>
+		<em>Sessions & Cookies</em><br>
+		The app starts with a temporary guest account. If a user signs up during his/her session, all urls get transferred over from the guest user to the newly created account.
 	</p>
 	<p>
 		<em>Counter Cache Column</em><br>
+		To improve performance by caching the number of urls saved for each user.
 	</p>
 	<p>
 		<em>Sortable Table Columns</em><br>
+		Built from scratch; allows admins to sort the items in a user table by clicking a table header.
 	</p>
 	<p>
-		<em>Will_Paginate gem</em><br>
+		<em>Screen Scraping</em><br>
+		Used Nokogiri to fetch external url titles.
+	</p>
+	<p>
+		<em>Pagination</em><br>
+		Via the will_paginate gem.
 	</p>
 	<p></p>
 </article>
@@ -44,24 +96,23 @@
 	<h2>Testing</h2>
 	<p>
 		<em>RSpec</em><br>
-		89 Requests, models, controllers, and helper specs. Also RSpec custom matchers
+		64 Request specs, 39 model specs, 5 controller specs, 3 helper specs, and 1 custom matcher.
 	</p>
 	<p>
 		<em>FactoryGirl</em><br>
-		defining factory sequences to generate a list of user objects
-	</p>
-	<p>
-		<em>Cucumber</em><br>
+		Defined factory sequences to generate lists of user and url objects.
 	</p>
 	<p>
 		<em>Capybara</em><br>
-		Acceptance testing framework for web applications
+		To simulate user interactions during acceptance testing.
 	</p>
 	<p>
 		<em>PhantomJS</em><br>
+		To validate Javascript functionality during acceptance testing.
 	</p>
 	<p></p>
 </article>
 <article id='about_me'>
-	<p>Welcome to LOL.ly and thank you for exploring my site.</p>
+	<%= image_tag('bw_profile.jpg', size: '100x100', alt: 'Eric Xu') %>
+	<p>Welcome to LOL.ly and thank you for exploring my site. If you would like to leave any feedback or report a bug, please email them to exu [dot] bug [at] gmail [dot] com.</p>
 </article>
