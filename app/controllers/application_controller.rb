@@ -27,12 +27,6 @@ class ApplicationController < ActionController::Base
 	    end
 	  end
 
-	  def generate_token(user)
-	    begin
-	      user.auth_token = SecureRandom.urlsafe_base64
-	    end while User.exists?(auth_token: user.auth_token)
-	  end
-
 	  def set_session_and_cookies(user)
 	    if params[:remember_me]
 	      cookies.permanent[:auth_token] = user.auth_token

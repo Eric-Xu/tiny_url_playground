@@ -86,10 +86,6 @@ describe "User pages" do
 				it { should have_link('Log Out', href: logout_path) }
 				it { should_not have_link('Log In', href: login_path) }
 				it { should_not have_link('Sign Up', href: signup_path) }
-
-				describe "the user's remember me auth_token" do
-					it { expect(user.auth_token).not_to be_blank }
-				end
 			end
 		end
 	end

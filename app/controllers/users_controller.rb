@@ -16,7 +16,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    generate_token(@user)
     if @user.save
       set_session_and_cookies(@user)
       transfer_urls_from_session(@user)

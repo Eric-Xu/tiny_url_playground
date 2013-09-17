@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	before_save { self.email.downcase! if self.email }
-  before_create :initialize_last_login
+	before_create :generate_token, :initialize_last_login
 
 	has_many :urls, dependent: :destroy
 
@@ -15,6 +15,12 @@ class User < ActiveRecord::Base
 						email_format: true
 
 	private
+	  def generate_token
+	    begin
+	      self.auth_token = SecureRandom.urlsafe_base64
+	    end while User.exists?(auth_token: self.auth_token)
+	  end
+
     def initialize_last_login
       self.last_login = Time.now
     end

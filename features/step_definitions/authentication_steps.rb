@@ -13,8 +13,7 @@ end
 Given /^the user has an account$/ do
   @user = User.create(email: 'user@foo.com',
   										password: 'foobar1',
-  										password_confirmation: 'foobar1',
-  										auth_token: 'aaabbbcccdddeeefffggg')
+  										password_confirmation: 'foobar1')
 end
 
 When /^he submits valid credentials$/ do
