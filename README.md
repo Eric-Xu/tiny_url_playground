@@ -13,7 +13,6 @@ The app allows users to enter a url and converts it into a random triplet of acr
   + Ajax
   + Responsive design
   + Progressive enhancement with Javascript
-
 #### Back End
   + Rails 4.0
   + Authentication from scratch
@@ -21,7 +20,6 @@ The app allows users to enter a url and converts it into a random triplet of acr
   + Pagination via will_paginate
   + Screen scraping using Nokogiri
   + Exception handling through Rack middleware
-
 #### Testing
   + RSpec
   + Capybara
