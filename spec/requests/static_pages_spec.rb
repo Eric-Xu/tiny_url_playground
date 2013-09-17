@@ -6,7 +6,7 @@ describe "Static pages" do
   before { visit root_path }
 
   it "should have the right links on the home page layout" do
-    expect(page).to have_link('Crafted by Eric Xu', href: 'https://gittyhub.com/Eric-Xu/tiny_url_playground')
+    expect(page).to have_link('Crafted by Eric Xu', href: 'https://github.com/Eric-Xu/tiny_url_playground')
     click_link "What's under the hood?"
     expect(page).to have_title(full_title('About'))
     click_link "Log In"

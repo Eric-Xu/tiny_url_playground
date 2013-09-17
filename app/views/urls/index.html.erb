@@ -1,5 +1,6 @@
+<%= render "layouts/scroll" %>
+<%= content_tag(:h1, "Acronymize your links", id: "list_header") unless @urls.size > 0 %>
 <%= render "form" %>
-
 <ul id="url_list">
 	<%= render @urls %>
 </ul>

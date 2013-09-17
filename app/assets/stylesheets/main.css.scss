@@ -224,6 +224,19 @@ section[role="main"] {
 	.page_view, .delete_url { color: darken($med-green, 25%);	}
 	.definitions { font-style: italic; }
 	.home { @include navigation-font; }
+	a#back_to_top {
+		display: none;
+		text-indent: -9999px;
+		height: 20px;
+		width: 20px;
+		position: fixed;
+		top: 50px;
+		left: 12px;
+		background: {
+			image: image-url('top.png');
+			repeat: no-repeat;
+		}
+	}
 	button.translate {
 		margin-left: auto;
 		margin-right: auto;
@@ -258,10 +271,10 @@ section[role="main"] {
 		}
 	}
 	ul#url_list {
-	  padding: 10px 25px 0 25px;
+	  padding: 10px 15px 0 15px;
 	  li {
 			line-height: normal;
-			padding: 10px 0;
+			padding: 10px;
 			&:hover {
 				background-color: lighten($med-green, 5%);
 			}
@@ -269,7 +282,7 @@ section[role="main"] {
 	}
 	div.notifications {
 		background-color: lighten($med-green, 5%);
-		width: 100%;
+		margin: 0 15px;
 		li { padding: 4px; }
 		p, div { padding: 10px; }
 	}
@@ -295,19 +308,6 @@ section[role="main"] {
 			margin-top: 10px;
 			padding: 10px 10px 0 20px;
 			p { padding: 10px 0; }
-		}
-	}
-	a#back_to_top {
-		display: none;
-		text-indent: -9999px;
-		height: 20px;
-		width: 20px;
-		position: fixed;
-		top: 50px;
-		left: 12px;
-		background: {
-			image: image-url('top.png');
-			repeat: no-repeat;
 		}
 	}
 

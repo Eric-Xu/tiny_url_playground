@@ -45,4 +45,14 @@ describe Url do
 			end
 		end
 	end
+
+	describe "with mixed case original_url" do
+		let(:mixed_case_url) { "WwW.fOoBaR.cOm" }
+
+		it "should be saved as all lower-case" do
+			@url.original_url = mixed_case_url
+			@url.save
+			expect(@url.reload.original_url).to eq "http://#{mixed_case_url.downcase}"
+		end
+	end
 end

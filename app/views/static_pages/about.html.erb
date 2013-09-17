@@ -1,19 +1,19 @@
 <% provide(:title, 'About') %>
 <h1>Techniques Used</h1>
-<%= link_to '^', '#', id: 'back_to_top' %>
+<%= render 'layouts/scroll' %>
 <article>
 	<h2>Front End</h2>
 	<p>
 		<em>HTML5</em><br>
-		For its semantic markup and client-side form validations.
+		Semantic markup and client-side form validations.
 	</p>
 	<p>
 		<em>Sass</em><br>
-		Used mixins, extends, variables, and nested rules to write better CSS.
+		Mixins, extends, variables, and nested rules to write better CSS.
 	</p>
 	<p>
 		<em>CSS3 Transitions</em><br>
-		To create a banner animation that did not depent on Javascript.
+		To create a banner animation that did not depend on Javascript.
 	</p>
 	<p>
 		<em>Sticky Footer</em><br>
@@ -96,7 +96,7 @@
 	<h2>Testing</h2>
 	<p>
 		<em>RSpec</em><br>
-		64 Request specs, 39 model specs, 5 controller specs, 3 helper specs, and 1 custom matcher.
+		64 request specs, 40 model specs, 5 controller specs, 3 helper specs, and 1 custom matcher.
 	</p>
 	<p>
 		<em>FactoryGirl</em><br>

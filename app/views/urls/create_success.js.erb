@@ -8,6 +8,10 @@ function hideDefinitions() {
 	$urlDefinitions.removeClass('showing').addClass('hidden');
 }
 
+function hideHeader() {
+	$('#list_header').addClass('hidden');
+}
+
 function initTranslateBtn() {
 	var $newUrl = $('#url_list li:first');
 	var $translateButton = $newUrl.find('.translate');
@@ -29,4 +33,5 @@ function initTranslateBtn() {
 
 createUrl();
 hideDefinitions();
+hideHeader();
 initTranslateBtn();

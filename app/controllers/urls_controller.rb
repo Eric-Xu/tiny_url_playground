@@ -1,6 +1,6 @@
 class UrlsController < ApplicationController
   before_action :set_url, only: [:destroy, :delete]
-  # skip_before_filter :verify_authenticity_token # for testing js only; opens CSRF attacks
+  skip_before_filter :verify_authenticity_token # for testing js only; opens CSRF attacks
 
 	def index
     @url = Url.new
