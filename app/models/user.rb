@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	before_save { self.email.downcase! if self.email }
+	before_save { self.email = email.downcase if self.email }
 	before_create :generate_token, :initialize_last_login
 
 	has_many :urls, dependent: :destroy

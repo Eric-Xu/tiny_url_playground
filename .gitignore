@@ -9,6 +9,9 @@
 /log/*.log
 /tmp
 
+# Ignore passwords and sensitive data.
+application.yml
+
 # Ignore other unneeded files.
 database.yml
 doc/
