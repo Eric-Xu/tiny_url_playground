@@ -1,5 +1,6 @@
 jQuery ->
-  counter = 0
+  storedIndex = $.cookie("acronym_index")
+  counter = if storedIndex == null then 0 else storedIndex
 
   loopData = (index) ->
     acronyms = [
@@ -43,6 +44,9 @@ jQuery ->
     window.setTimeout ->
       loopData(counter)
       resetContent()
-    , 10000
+    , 1000
     toggleHidden()
     counter++
+    $.cookie("acronym_index", counter)
+
+  loopData(counter)

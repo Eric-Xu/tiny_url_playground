@@ -13,6 +13,7 @@
 //= require modernizr_2.6.2.custom
 //= require jquery
 //= require jquery_ujs
+//= require jquery.cookie.min
 //= require forms
 //= require header
 //= require notifications

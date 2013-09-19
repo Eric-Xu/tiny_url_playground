@@ -38,6 +38,7 @@ class ApplicationController < ActionController::Base
 	  def delete_session_and_cookies
 	    reset_session # clear url_ids and auth_token
 	    cookies.delete(:auth_token)
+	    cookies.delete(:acronym_index)
 	  end
 
 	  def render_error(exception)
