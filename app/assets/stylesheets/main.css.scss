@@ -159,10 +159,13 @@ header[role="banner"] {
 			@include body-font;
 			margin: 0 22px;
 			padding: 9px 0;
-			&#front_msg, &#rear_msg {
+			&#no_js_msg {
 				font-style: italic;
-				padding-top: 18px;
 				border-top: 1px solid $light-green;
+			}
+			&#front_msg, &#rear_msg {
+				@extend #no_js_msg;
+				padding-top: 18px;
 			}
 		}
 		#ring_upper {

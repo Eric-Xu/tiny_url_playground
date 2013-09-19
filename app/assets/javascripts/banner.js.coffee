@@ -30,6 +30,10 @@ jQuery ->
     $('#ring_acr').text(acronym)
     $('#ring_def').text(definition)
 
+  initJSContent = ->
+    $('#no_js_msg').removeClass('showing').addClass('hidden')
+    $('#front_msg').removeClass('hidden').addClass('showing')
+
   toggleHidden = ->
     $('#ring_def').removeClass('hidden').addClass('showing')
     $('#rear_msg').removeClass('hidden').addClass('showing')
@@ -44,9 +48,10 @@ jQuery ->
     window.setTimeout ->
       loopData(counter)
       resetContent()
-    , 1000
+    , 10000
     toggleHidden()
     counter++
     $.cookie("acronym_index", counter)
 
+  initJSContent()
   loopData(counter)
