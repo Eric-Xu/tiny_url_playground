@@ -6,9 +6,6 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
-# Load private passwords and settings; see RailsCasts 85.
-ENV.update YAML.load(File.read(File.expand_path('../application.yml', __FILE__)))
-
 module Lolly01
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
