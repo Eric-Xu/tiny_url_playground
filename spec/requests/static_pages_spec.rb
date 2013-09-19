@@ -39,14 +39,22 @@ describe "Static pages" do
     end
   end
 
-  describe "banner ring before clicking", js: true do
+  describe "banner ring when JS is disabled" do
     it "should show the default content" do
+      page.should have_content('Sorry')
+      page.should have_selector('p#ring_def.hidden', visible: false)
+      page.should have_selector('p#front_msg.hidden', visible: false)
+      page.should have_selector('p#rear_msg.hidden', visible: false)
+    end
+  end
+
+  describe "banner ring when JS is enabled", js: true do
+    it "should show the JS-loaded content" do
       within ('div#ring_front') do
         page.should have_content('LOL')
       end
 
       within ('div#ring_rear') do
-        page.should have_selector('h2.showing')
         page.should have_selector('p#front_msg.showing')
         page.should have_selector('p#rear_msg.hidden', visible: false)
         page.should have_selector('p#ring_def.hidden', visible: false)
@@ -60,7 +68,6 @@ describe "Static pages" do
 
     it "should show the new content" do
       within ('div#ring_rear') do
-        page.should have_selector('h2.showing')
         page.should have_selector('p#ring_def.showing')
         page.should have_selector('p#rear_msg.showing')
         page.should have_selector('p#front_msg.hidden', visible: false)
