@@ -1,7 +1,7 @@
 <%= form_for @url, remote: true do |f| %>
   <%= render "shared/error_messages", target: @url %>
   <%= f.text_field :original_url,
-							  	placeholder: "Paste a link to shorten it",
+							  	placeholder: "Paste a link to acronymize it",
 							  	autofocus: true,
 							  	required: true,
 							  	class: "autofocus_input" %>
