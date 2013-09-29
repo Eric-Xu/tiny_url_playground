@@ -1,4 +1,4 @@
-# LOL.ly: a url sweetener
+# LOL.ly: a url acronymizer
 
 LOL.ly is a Rails 4.0 app featuring a responsive layout and progressive enhancement for Javascript. Testing is done through RSpec for models, controllers, and helpers, while Capybara and PhantomJS is also used during high-level integration testing.
 
@@ -36,9 +36,10 @@ The app allows users to enter a url and converts it into a random triplet of acr
 
 Run these commands to try it out:
 
-> `bundle`
-> `cp config/application.example.yml config/application.yml`
-> `rake db:setup`
-> `rails s`
-
+```
+bundle
+cp config/application.example.yml config/application.yml
+rake db:setup
+rails s
+```
 *Requires Rails 4.0.0 and Ruby 2.0.0 or later to run.*
