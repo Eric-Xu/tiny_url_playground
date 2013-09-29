@@ -1,18 +1,18 @@
 # LOL.ly: a url acronymizer
 
-LOL.ly is a Rails 4.0 app featuring a responsive layout and progressive enhancement for Javascript. Testing is done through RSpec for models, controllers, and helpers, while Capybara and PhantomJS is also used during high-level integration testing.
+LOL.ly is a Rails 4.0 app featuring a responsive layout and progressive enhancement for JavaScript. Testing is done through RSpec for models, controllers, and helpers, while Capybara and PhantomJS is also used during high-level integration testing.
 
 The app allows users to enter a url and converts it into a random triplet of acronyms. It starts with a temporary guest account. If a user signs up during his/her session, all urls get transferred over from the guest user to the newly created account.
 
 #### Front End
   + HTML5 elements and form validations
-  + CSS transitions
-  + SCSS mixins, extends, and variables
-  + Coffeescript
+  + CSS3 transitions
+  + Sass mixins, extends, and variables
+  + JavaScript/CoffeeScript
   + jQuery
   + Ajax
   + Responsive design
-  + Progressive enhancement with Javascript
+  + Progressive enhancement with JavaScript
 
 #### Back End
   + Rails 4.0
